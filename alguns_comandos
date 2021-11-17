@@ -1,0 +1,7 @@
+empacotar o projeto (pasta target) precisa rodar o comando na raiz do projeto ./mvnw package
+roda o pacote via terminal java -jar tutorial-0.0.1-SNAPSHOT.jar 
+
+Para matar o processo 
+lsof -n -i4TCP:8080 
+PID é o segundo campo.
+kill -9 PID
