@@ -1,6 +1,7 @@
 package br.com.franca.tutorial.config;
 
 import br.com.franca.tutorial.notificacao.NotificadorEmail;
+import br.com.franca.tutorial.service.AtivacaoClienteService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -15,11 +16,16 @@ public class NotificadorEmailConfig {
      */
 
     @Bean
-    public NotificadorEmail notificadorEmail2 (){
+    public NotificadorEmail notificadorEmail (){
         System.out.println("Instanciando um Notificador de EMAIL " +
                 "através da classe anotada com @Configuration");
         boolean caixaAlta = true;
         String hostServerSMTP = "smtp.meuemail.com.br";
         return new NotificadorEmail(caixaAlta, hostServerSMTP);
+    }
+
+    @Bean
+    public AtivacaoClienteService ativacaoClienteService() {
+        return new AtivacaoClienteService(notificadorEmail());
     }
 }

@@ -7,7 +7,6 @@ import br.com.franca.tutorial.notificacao.NotificadorSMS;
 import org.springframework.stereotype.Component;
 import org.springframework.util.ObjectUtils;
 
-@Component
 public class AtivacaoClienteService {
 
     private Notificador notificador;
@@ -18,6 +17,7 @@ public class AtivacaoClienteService {
     }
 
     public String ativar(Cliente cliente) {
+        System.out.println("AtivacaoClienteService :: ativar");
 
         String mensagem = "Cadastro ativo com sucesso!!";
 
