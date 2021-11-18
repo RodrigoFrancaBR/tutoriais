@@ -4,14 +4,16 @@ import br.com.franca.tutorial.domain.model.Cliente;
 import br.com.franca.tutorial.notificacao.Notificador;
 import br.com.franca.tutorial.notificacao.NotificadorEmail;
 import br.com.franca.tutorial.notificacao.NotificadorSMS;
+import org.springframework.stereotype.Component;
 import org.springframework.util.ObjectUtils;
 
-
+@Component
 public class AtivacaoClienteService {
 
     private Notificador notificador;
 
     public AtivacaoClienteService(Notificador notificador){
+        System.out.println("Instanciando uma Ativacao de Cliente com um notificador: " + notificador);
         this.notificador = notificador;
     }
 

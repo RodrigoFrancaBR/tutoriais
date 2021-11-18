@@ -22,7 +22,8 @@ public class AtivacaoClienteServiceTest {
                 .telefone("21985236417")
                 .build();
 
-        NotificadorSMS notificadorSMS = new NotificadorSMS();
+        // NotificadorSMS notificadorSMS = new NotificadorSMS();
+        NotificadorEmail notificadorSMS = new NotificadorEmail();
 
         AtivacaoClienteService service = new AtivacaoClienteService(notificadorSMS);
 
