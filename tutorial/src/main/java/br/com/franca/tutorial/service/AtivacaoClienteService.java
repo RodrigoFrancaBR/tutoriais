@@ -1,6 +1,7 @@
 package br.com.franca.tutorial.service;
 
 import br.com.franca.tutorial.domain.model.Cliente;
+import br.com.franca.tutorial.notificacao.Notificador;
 import br.com.franca.tutorial.notificacao.NotificadorEmail;
 import br.com.franca.tutorial.notificacao.NotificadorSMS;
 import org.springframework.util.ObjectUtils;
@@ -8,18 +9,13 @@ import org.springframework.util.ObjectUtils;
 
 public class AtivacaoClienteService {
 
-    private NotificadorSMS notificadorSMS;
-    private NotificadorEmail notificadorEmail;
+    private Notificador notificador;
 
-    public AtivacaoClienteService(NotificadorSMS notificadorSMS) {
-        this.notificadorSMS = notificadorSMS;
+    public AtivacaoClienteService(Notificador notificador){
+        this.notificador = notificador;
     }
 
-    public AtivacaoClienteService(NotificadorEmail notificadorEmail) {
-        this.notificadorEmail = notificadorEmail;
-    }
-
-    public String  ativar(Cliente cliente) {
+    public String ativar(Cliente cliente) {
 
         String mensagem = "Cadastro ativo com sucesso!!";
 
@@ -28,6 +24,6 @@ public class AtivacaoClienteService {
         }
 
         cliente.setAtivo(true);
-        return this.notificadorSMS.notificar(cliente, mensagem);
+        return this.notificador.notificar(cliente, mensagem);
     }
 }

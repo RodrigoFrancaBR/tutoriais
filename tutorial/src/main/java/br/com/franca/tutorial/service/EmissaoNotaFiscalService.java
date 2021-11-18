@@ -2,16 +2,26 @@ package br.com.franca.tutorial.service;
 
 import br.com.franca.tutorial.domain.model.Cliente;
 import br.com.franca.tutorial.domain.model.Produto;
+import br.com.franca.tutorial.notificacao.Notificador;
 import org.springframework.util.ObjectUtils;
 
 public class EmissaoNotaFiscalService {
+
+    private Notificador notificador;
+
+    public EmissaoNotaFiscalService(Notificador notificador) {
+        this.notificador = notificador;
+    }
+
     public boolean emitir(Cliente cliente, Produto produto) {
+
+        String mensagem = "Nota fiscal emitida com sucesso!!";
 
         if (ObjectUtils.isEmpty(cliente) || ObjectUtils.isEmpty(produto)){
             throw new IllegalArgumentException("Cliente e Produto devem ser válidos");
         }
 
-        System.out.printf("Emitindo nota fiscal para o cliente: %s do produto: %s no valor de: ", cliente.getNome(), produto.getNome(), produto.getValor());
+        notificador.notificar(cliente,mensagem);
         return true;
     }
 }
