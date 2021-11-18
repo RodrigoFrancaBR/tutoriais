@@ -27,7 +27,7 @@ public class EmissaoNotaFiscalServiceTest {
 
         Produto produto = Produto.builder().nome("computador").valor(new BigDecimal("5000.00")).build();
 
-        Notificador notificador = new NotificadorEmail();
+        Notificador notificador = new NotificadorEmail(false, "");
 
         EmissaoNotaFiscalService service = new EmissaoNotaFiscalService(notificador);
 
@@ -48,7 +48,7 @@ public class EmissaoNotaFiscalServiceTest {
 
         Produto produto = Produto.builder().nome("computador").valor(new BigDecimal("5000.00")).build();
 
-        Notificador notificador = new NotificadorEmail();
+        Notificador notificador = new NotificadorEmail(false, "");
 
         EmissaoNotaFiscalService service = new EmissaoNotaFiscalService(notificador);
 

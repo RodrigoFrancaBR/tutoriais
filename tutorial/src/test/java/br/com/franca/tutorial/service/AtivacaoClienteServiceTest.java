@@ -23,7 +23,7 @@ public class AtivacaoClienteServiceTest {
                 .build();
 
         // NotificadorSMS notificadorSMS = new NotificadorSMS();
-        NotificadorEmail notificadorSMS = new NotificadorEmail();
+        NotificadorEmail notificadorSMS = new NotificadorEmail(false, "");
 
         AtivacaoClienteService service = new AtivacaoClienteService(notificadorSMS);
 
@@ -43,7 +43,7 @@ public class AtivacaoClienteServiceTest {
                 .telefone("21985236417")
                 .build();
 
-        NotificadorEmail notificadorEmail = new NotificadorEmail();
+        NotificadorEmail notificadorEmail = new NotificadorEmail(false, "");
 
         AtivacaoClienteService service = new AtivacaoClienteService(notificadorEmail);
 
