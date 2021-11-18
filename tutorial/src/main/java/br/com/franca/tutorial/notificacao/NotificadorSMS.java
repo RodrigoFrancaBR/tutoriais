@@ -1,8 +1,14 @@
 package br.com.franca.tutorial.notificacao;
 
 import br.com.franca.tutorial.domain.model.Cliente;
+import org.springframework.stereotype.Component;
 
+@Component
 public class NotificadorSMS implements Notificador {
+
+    public NotificadorSMS(){
+        System.out.println("Instanciando um Notificador de SMS através do @Component");
+    }
 
     @Override
     public String notificar(Cliente cliente, String mensagem) {
