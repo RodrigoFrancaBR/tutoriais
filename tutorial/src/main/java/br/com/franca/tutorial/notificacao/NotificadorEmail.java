@@ -3,19 +3,20 @@ package br.com.franca.tutorial.notificacao;
 import br.com.franca.tutorial.domain.model.Cliente;
 import org.springframework.stereotype.Component;
 
-@Component
+// @Component
 public class NotificadorEmail implements Notificador{
     private boolean caixaAlta;
     private String hostServerSMTP;
 
-    public NotificadorEmail(){
-        System.out.println("Instanciando um Notificador de EMAIL através do @Component");
-    }
+//    public NotificadorEmail(){
+//        System.out.println("Instanciando um Notificador de EMAIL através do @Component");
+//    }
 
     public NotificadorEmail(boolean caixaAlta, String hostServerSMTP){
         this.caixaAlta = caixaAlta;
         this.hostServerSMTP = hostServerSMTP;
-        System.out.println("Instanciando um Notificador de EMAIL através do @Component");
+        // System.out.println("Instanciando um Notificador de EMAIL através do @Component");
+        System.out.println("Instanciando um Notificador de EMAIL através da classe sem anotação @Component");
     }
 
     public String notificar(Cliente cliente, String mensagem) {
