@@ -16,7 +16,7 @@ public class NotificadorEmail implements Notificador{
         this.caixaAlta = caixaAlta;
         this.hostServerSMTP = hostServerSMTP;
         // System.out.println("Instanciando um Notificador de EMAIL através do @Component");
-        System.out.println("Instanciando um Notificador de EMAIL através da classe sem anotação @Component");
+        System.out.println("Instanciando um Notificador de EMAIL");
     }
 
     public String notificar(Cliente cliente, String mensagem) {

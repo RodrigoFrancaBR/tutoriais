@@ -18,14 +18,14 @@ public class NotificadorEmailConfig {
     @Bean
     public NotificadorEmail notificadorEmail (){
         System.out.println("Instanciando um Notificador de EMAIL " +
-                "através da classe anotada com @Configuration");
+                "através da classe NotificadorEmailConfig anotada com @Configuration");
         boolean caixaAlta = true;
         String hostServerSMTP = "smtp.meuemail.com.br";
         return new NotificadorEmail(caixaAlta, hostServerSMTP);
     }
 
-    @Bean
-    public AtivacaoClienteService ativacaoClienteService() {
-        return new AtivacaoClienteService(notificadorEmail());
-    }
+//    @Bean
+//    public AtivacaoClienteService ativacaoClienteService() {
+//        return new AtivacaoClienteService(notificadorEmail());
+//    }
 }
