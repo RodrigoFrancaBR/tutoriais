@@ -1,6 +1,7 @@
 package br.com.franca.tutorial.service;
 
 import br.com.franca.tutorial.domain.model.Cliente;
+import br.com.franca.tutorial.notificacao.NotificadorSMS;
 
 
 public class AtivacaoClienteService {
