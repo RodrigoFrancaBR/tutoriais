@@ -29,7 +29,8 @@ public class EmissaoNotaFiscalServiceTest {
 
         Notificador notificador = new NotificadorEmail(false, "");
 
-        EmissaoNotaFiscalService service = new EmissaoNotaFiscalService(notificador);
+        // EmissaoNotaFiscalService service = new EmissaoNotaFiscalService(notificador);
+        EmissaoNotaFiscalService service = new EmissaoNotaFiscalService();
 
         boolean emitido = service.emitir(cliente, produto);
 
@@ -50,7 +51,8 @@ public class EmissaoNotaFiscalServiceTest {
 
         Notificador notificador = new NotificadorEmail(false, "");
 
-        EmissaoNotaFiscalService service = new EmissaoNotaFiscalService(notificador);
+        // EmissaoNotaFiscalService service = new EmissaoNotaFiscalService(notificador);
+        EmissaoNotaFiscalService service = new EmissaoNotaFiscalService();
 
         boolean emitido = service.emitir(cliente, produto);
 

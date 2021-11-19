@@ -4,7 +4,7 @@ import br.com.franca.tutorial.domain.model.Cliente;
 import org.springframework.stereotype.Component;
 
 @Component
-public class NotificadorSMS //implements Notificador
+public class NotificadorSMS implements Notificador
  {
 
     public NotificadorSMS(){
