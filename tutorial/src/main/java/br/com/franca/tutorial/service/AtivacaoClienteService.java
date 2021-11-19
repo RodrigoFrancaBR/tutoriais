@@ -5,6 +5,7 @@ import br.com.franca.tutorial.notificacao.Notificador;
 import br.com.franca.tutorial.notificacao.NotificadorEmail;
 import br.com.franca.tutorial.notificacao.NotificadorSMS;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.springframework.util.ObjectUtils;
 

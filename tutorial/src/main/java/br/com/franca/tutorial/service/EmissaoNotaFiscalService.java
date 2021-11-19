@@ -4,6 +4,7 @@ import br.com.franca.tutorial.domain.model.Cliente;
 import br.com.franca.tutorial.domain.model.Produto;
 import br.com.franca.tutorial.notificacao.Notificador;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.springframework.util.ObjectUtils;
 
@@ -14,6 +15,7 @@ public class EmissaoNotaFiscalService {
 
     // private Notificador notificador;
 
+    @Qualifier("prioridade-0")
     @Autowired
     // private List<Notificador> notificadores;
     private Notificador notificador;

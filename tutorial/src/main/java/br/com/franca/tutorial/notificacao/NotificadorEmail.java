@@ -1,6 +1,7 @@
 package br.com.franca.tutorial.notificacao;
 
 import br.com.franca.tutorial.domain.model.Cliente;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
