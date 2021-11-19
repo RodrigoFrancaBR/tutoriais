@@ -30,8 +30,8 @@ public class AtivacaoClienteServiceTest {
         // NotificadorSMS notificadorSMS = new NotificadorSMS();
         NotificadorEmail notificadorSMS = new NotificadorEmail(false, "");
 
-        // AtivacaoClienteService service = new AtivacaoClienteService(notificadorSMS);
-        AtivacaoClienteService service = new AtivacaoClienteService();
+        AtivacaoClienteService service = new AtivacaoClienteService(notificadorSMS);
+        // AtivacaoClienteService service = new AtivacaoClienteService();
 
         String tipoDeNotificacao = service.ativar(rodrigo);
 
@@ -51,8 +51,8 @@ public class AtivacaoClienteServiceTest {
 
         NotificadorEmail notificadorEmail = new NotificadorEmail(false, "");
 
-        // AtivacaoClienteService service = new AtivacaoClienteService(notificadorEmail);
-        AtivacaoClienteService service = new AtivacaoClienteService();
+        AtivacaoClienteService service = new AtivacaoClienteService(notificadorEmail);
+        // AtivacaoClienteService service = new AtivacaoClienteService();
 
         String tipoDeNotificacao = service.ativar(rodrigo);
 

@@ -1,10 +1,12 @@
 package br.com.franca.tutorial.notificacao;
 
 import br.com.franca.tutorial.domain.model.Cliente;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 // @Component
 public class NotificadorEmail implements Notificador{
+
     private boolean caixaAlta;
     private String hostServerSMTP;
 

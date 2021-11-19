@@ -15,7 +15,8 @@ public class EmissaoNotaFiscalService {
     // private Notificador notificador;
 
     @Autowired
-    private List<Notificador> notificadores;
+    // private List<Notificador> notificadores;
+    private Notificador notificador;
 
 //    public EmissaoNotaFiscalService(Notificador notificador) {
 //        System.out.println("Instanciando uma Emissao de Nota Fiscal com um notificador: " + notificador);
@@ -31,13 +32,13 @@ public class EmissaoNotaFiscalService {
             throw new IllegalArgumentException("Cliente e Produto devem ser válidos");
         }
 
-        for(Notificador notificador: notificadores){
-            System.out.printf("Para cada notificador notifica com o notificador: %s ", notificador);
-            System.out.println("::::::::;");
-            resultado = notificador.notificar(cliente, mensagem);
-        }
+//        for(Notificador notificador: notificadores){
+//            System.out.printf("Para cada notificador notifica com o notificador: %s ", notificador);
+//            System.out.println("::::::::;");
+//            resultado = notificador.notificar(cliente, mensagem);
+//        }
 
-        // notificador.notificar(cliente,mensagem);
+        notificador.notificar(cliente,mensagem);
         System.out.println(resultado);
 
         return true;

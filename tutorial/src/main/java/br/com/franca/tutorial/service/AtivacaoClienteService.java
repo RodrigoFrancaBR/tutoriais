@@ -12,14 +12,14 @@ import java.util.List;
 
 public class AtivacaoClienteService {
 
-    // private Notificador notificador;
-    @Autowired
-    private List<Notificador> notificadores;
+     private Notificador notificador;
+//    @Autowired
+//    private List<Notificador> notificadores;
 
-//    public AtivacaoClienteService(Notificador notificador){
-//        System.out.println("Instanciando uma Ativacao de Cliente com um notificador: " + notificador);
-//        this.notificador = notificador;
-//    }
+    public AtivacaoClienteService(Notificador notificador){
+        System.out.println("Instanciando uma Ativacao de Cliente com um notificador: " + notificador);
+        this.notificador = notificador;
+    }
 
     public String ativar(Cliente cliente) {
         String resultado = "SMS OU EMAIL ?";
@@ -34,12 +34,12 @@ public class AtivacaoClienteService {
 
         cliente.setAtivo(true);
 
-        for(Notificador notificador: notificadores){
-            System.out.printf("Para cada notificador notifica com o notificador: %s ", notificador);
-            System.out.println("::::::::;");
-            resultado = notificador.notificar(cliente, mensagem);
-        }
-        // return this.notificador.notificar(cliente, mensagem);
-        return  resultado;
+//        for(Notificador notificador: notificadores){
+//            System.out.printf("Para cada notificador notifica com o notificador: %s ", notificador);
+//            System.out.println("::::::::;");
+//            resultado = notificador.notificar(cliente, mensagem);
+//        }
+        return this.notificador.notificar(cliente, mensagem);
+        // return  resultado;
     }
 }

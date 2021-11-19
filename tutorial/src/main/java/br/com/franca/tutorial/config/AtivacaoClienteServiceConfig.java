@@ -9,11 +9,11 @@ import org.springframework.context.annotation.Configuration;
 public class AtivacaoClienteServiceConfig {
 
     @Bean
-    // public AtivacaoClienteService ativacaoClienteService(Notificador notificador) {
-    public AtivacaoClienteService ativacaoClienteService() {
+    public AtivacaoClienteService ativacaoClienteService(Notificador notificador) {
+//    public AtivacaoClienteService ativacaoClienteService() {
         System.out.println("Instanciando uma Ativacao de Cliente Service " +
                 "através da classe AtivacaoClienteServiceConfig anotada com @Configuration");
-        // return new AtivacaoClienteService(notificador);
-        return new AtivacaoClienteService();
+        return new AtivacaoClienteService(notificador);
+        // return new AtivacaoClienteService();
     }
 }
