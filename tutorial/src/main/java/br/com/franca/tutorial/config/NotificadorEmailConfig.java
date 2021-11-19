@@ -1,5 +1,7 @@
 package br.com.franca.tutorial.config;
 
+import br.com.franca.tutorial.domain.model.anotations.PrioridadeDoNotificador;
+import br.com.franca.tutorial.domain.model.enums.Prioridade;
 import br.com.franca.tutorial.notificacao.NotificadorEmail;
 import br.com.franca.tutorial.service.AtivacaoClienteService;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -17,7 +19,8 @@ public class NotificadorEmailConfig {
      *
      */
 
-    @Qualifier("prioridade-1")
+    @PrioridadeDoNotificador(Prioridade.DOIS)
+    // @Qualifier("prioridade-1")
     // @Primary
     @Bean
     public NotificadorEmail notificadorEmail (){

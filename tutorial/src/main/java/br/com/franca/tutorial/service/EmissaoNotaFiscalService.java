@@ -2,6 +2,8 @@ package br.com.franca.tutorial.service;
 
 import br.com.franca.tutorial.domain.model.Cliente;
 import br.com.franca.tutorial.domain.model.Produto;
+import br.com.franca.tutorial.domain.model.anotations.PrioridadeDoNotificador;
+import br.com.franca.tutorial.domain.model.enums.Prioridade;
 import br.com.franca.tutorial.notificacao.Notificador;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -14,8 +16,8 @@ import java.util.List;
 public class EmissaoNotaFiscalService {
 
     // private Notificador notificador;
-
-    @Qualifier("prioridade-0")
+    @PrioridadeDoNotificador(Prioridade.DOIS)
+    // @Qualifier("prioridade-0")
     @Autowired
     // private List<Notificador> notificadores;
     private Notificador notificador;

@@ -1,11 +1,14 @@
 package br.com.franca.tutorial.notificacao;
 
 import br.com.franca.tutorial.domain.model.Cliente;
+import br.com.franca.tutorial.domain.model.anotations.PrioridadeDoNotificador;
+import br.com.franca.tutorial.domain.model.enums.Prioridade;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
-@Qualifier("prioridade-0")
+@PrioridadeDoNotificador(Prioridade.UM)
+// @Qualifier("prioridade-0")
 // @Primary
 @Component
 public class NotificadorSMS implements Notificador
