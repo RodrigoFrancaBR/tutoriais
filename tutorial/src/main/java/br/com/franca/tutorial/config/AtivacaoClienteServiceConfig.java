@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class AtivacaoClienteServiceConfig {
 
-    @Bean
+    @Bean(initMethod = "methodName1", destroyMethod = "methodName2")
     public AtivacaoClienteService ativacaoClienteService(
             @PrioridadeDoNotificador(Prioridade.UM)
             // @Qualifier("prioridade-1")

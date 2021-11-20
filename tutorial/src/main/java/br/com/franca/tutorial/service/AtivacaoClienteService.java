@@ -22,6 +22,14 @@ public class AtivacaoClienteService {
         this.notificador = notificador;
     }
 
+    public void methodName1(){
+        System.out.println("mesma coisa que por @PostConstruct no método : chamado depois do contrutor");
+    }
+
+    public void methodName2(){
+        System.out.println("mesma coisa que por @PreDestroy no método : chamado depois do contrutor");
+    }
+
     public String ativar(Cliente cliente) {
         String resultado = "SMS OU EMAIL ?";
 
