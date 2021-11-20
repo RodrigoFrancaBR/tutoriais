@@ -6,12 +6,17 @@ import br.com.franca.tutorial.notificacao.NotificadorEmail;
 import br.com.franca.tutorial.notificacao.NotificadorSMS;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 import org.springframework.util.ObjectUtils;
 
 import java.util.List;
-
+// classe com baixa coesão.. está com duas responsabilidades. Ativar e notificar.
 public class AtivacaoClienteService {
+
+    @Autowired
+    private ApplicationEventPublisher eventPublisher;
 
      private Notificador notificador;
 //    @Autowired
@@ -42,6 +47,8 @@ public class AtivacaoClienteService {
         }
 
         cliente.setAtivo(true);
+
+        eventPublisher.publishEvent(cliente);
 
 //        for(Notificador notificador: notificadores){
 //            System.out.printf("Para cada notificador notifica com o notificador: %s ", notificador);
