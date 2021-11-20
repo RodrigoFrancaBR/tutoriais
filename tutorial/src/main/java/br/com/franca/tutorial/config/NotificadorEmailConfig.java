@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Profile;
 
 @Configuration
 public class NotificadorEmailConfig {
@@ -19,6 +20,7 @@ public class NotificadorEmailConfig {
      *
      */
 
+    @Profile("dev")
     @PrioridadeDoNotificador(Prioridade.DOIS)
     // @Qualifier("prioridade-1")
     // @Primary

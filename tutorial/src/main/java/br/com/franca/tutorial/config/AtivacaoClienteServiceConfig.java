@@ -13,7 +13,7 @@ public class AtivacaoClienteServiceConfig {
 
     @Bean
     public AtivacaoClienteService ativacaoClienteService(
-            @PrioridadeDoNotificador(Prioridade.DOIS)
+            @PrioridadeDoNotificador(Prioridade.UM)
             // @Qualifier("prioridade-1")
             Notificador notificador) {
 //    public AtivacaoClienteService ativacaoClienteService() {

@@ -5,8 +5,9 @@ import br.com.franca.tutorial.domain.model.anotations.PrioridadeDoNotificador;
 import br.com.franca.tutorial.domain.model.enums.Prioridade;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
-
+@Profile("local")
 @PrioridadeDoNotificador(Prioridade.UM)
 // @Qualifier("prioridade-0")
 // @Primary

@@ -16,7 +16,7 @@ import java.util.List;
 public class EmissaoNotaFiscalService {
 
     // private Notificador notificador;
-    @PrioridadeDoNotificador(Prioridade.DOIS)
+    @PrioridadeDoNotificador(Prioridade.UM)
     // @Qualifier("prioridade-0")
     @Autowired
     // private List<Notificador> notificadores;
