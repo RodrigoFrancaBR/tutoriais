@@ -12,7 +12,7 @@ public class AtivacaoClienteServiceConfig {
 
     @Bean(initMethod = "methodName1", destroyMethod = "methodName2")
     public AtivacaoClienteService ativacaoClienteService(
-            @PrioridadeDoNotificador(Prioridade.UM)
+            @PrioridadeDoNotificador(Prioridade.DOIS)
             Notificador notificador) {
         System.out.println("Instanciando uma Ativacao de Cliente Service " +
                 "através da classe AtivacaoClienteServiceConfig anotada com @Configuration");
