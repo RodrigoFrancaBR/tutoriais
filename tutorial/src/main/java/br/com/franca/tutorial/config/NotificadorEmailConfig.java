@@ -1,8 +1,10 @@
 package br.com.franca.tutorial.config;
 
+import br.com.franca.tutorial.config.properties.NotificadorEmailProperties;
 import br.com.franca.tutorial.domain.model.anotations.PrioridadeDoNotificador;
 import br.com.franca.tutorial.domain.model.enums.Prioridade;
 import br.com.franca.tutorial.service.notificacao.NotificadorEmail;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,8 +13,10 @@ import org.springframework.context.annotation.Profile;
 @Configuration
 public class NotificadorEmailConfig {
 
-    @Value("${notificador.email.porta-servidor}")
-    private Integer serverPort;
+      @Autowired
+      private NotificadorEmailProperties notificadorEmailProperties;
+//    @Value("${notificador.email.porta-servidor}")
+//    private Integer serverPort;
 
     /**
      * Não quero mais que o Spring gerencie o Notificador de Email
@@ -28,7 +32,8 @@ public class NotificadorEmailConfig {
         System.out.println("Instanciando um Notificador de EMAIL " +
                 "através da classe NotificadorEmailConfig anotada com @Configuration");
 
-        System.out.println("SERVER PORT: " + serverPort);
+        System.out.println("SERVER PORT: " + notificadorEmailProperties.getPortaServidor());
+//        System.out.println("SERVER PORT: " + serverPort);
 
         boolean caixaAlta = true;
         String hostServerSMTP = "smtp.meuemail.com.br";
