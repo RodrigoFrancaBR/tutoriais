@@ -13,18 +13,20 @@ import org.springframework.util.ObjectUtils;
 
 @Component
 public class EmissaoNotaFiscalService {
+
+    @Value("${spring.profiles.active}")
+    private String activeProfile;
+
     @Autowired
     NotificadorSMSProperties notificadorSMSProperties;
-//    @Value("${notificador.sms.operadora-celular}")
-//    private String operadora;
 
     @PrioridadeDoNotificador(Prioridade.UM)
     @Autowired
     private Notificador notificador;
 
     public boolean emitir(Cliente cliente, Produto produto) {
-          System.out.println(notificadorSMSProperties.getOperadoraCelular());
-//        System.out.println(operadora);
+        System.out.println(activeProfile);
+        System.out.println(notificadorSMSProperties.getOperadoraCelular());
 
         String mensagem = "Nota fiscal emitida com sucesso!!";
 

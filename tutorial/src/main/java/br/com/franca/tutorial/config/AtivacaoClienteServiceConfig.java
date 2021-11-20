@@ -2,8 +2,8 @@ package br.com.franca.tutorial.config;
 
 import br.com.franca.tutorial.domain.model.anotations.PrioridadeDoNotificador;
 import br.com.franca.tutorial.domain.model.enums.Prioridade;
-import br.com.franca.tutorial.service.notificacao.Notificador;
 import br.com.franca.tutorial.service.AtivacaoClienteService;
+import br.com.franca.tutorial.service.notificacao.Notificador;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
