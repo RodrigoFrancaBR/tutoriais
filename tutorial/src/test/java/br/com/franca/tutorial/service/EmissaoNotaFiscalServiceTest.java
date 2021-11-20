@@ -2,8 +2,8 @@ package br.com.franca.tutorial.service;
 
 import br.com.franca.tutorial.domain.model.Cliente;
 import br.com.franca.tutorial.domain.model.Produto;
-import br.com.franca.tutorial.notificacao.Notificador;
-import br.com.franca.tutorial.notificacao.NotificadorEmail;
+import br.com.franca.tutorial.service.notificacao.Notificador;
+import br.com.franca.tutorial.service.notificacao.NotificadorEmail;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

@@ -1,26 +1,18 @@
 package br.com.franca.tutorial.service;
 
 import br.com.franca.tutorial.domain.model.Cliente;
-import br.com.franca.tutorial.notificacao.Notificador;
-import br.com.franca.tutorial.notificacao.NotificadorEmail;
-import br.com.franca.tutorial.notificacao.NotificadorSMS;
+import br.com.franca.tutorial.event.ClienteAtivadoEvent;
+import br.com.franca.tutorial.service.notificacao.Notificador;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationEventPublisher;
-import org.springframework.context.annotation.Profile;
-import org.springframework.stereotype.Component;
 import org.springframework.util.ObjectUtils;
 
-import java.util.List;
-// classe com baixa coesão.. está com duas responsabilidades. Ativar e notificar.
 public class AtivacaoClienteService {
 
     @Autowired
     private ApplicationEventPublisher eventPublisher;
 
-     private Notificador notificador;
-//    @Autowired
-//    private List<Notificador> notificadores;
+    private Notificador notificador;
 
     public AtivacaoClienteService(Notificador notificador){
         System.out.println("Instanciando uma Ativacao de Cliente com um notificador: " + notificador);
@@ -35,7 +27,7 @@ public class AtivacaoClienteService {
         System.out.println("mesma coisa que por @PreDestroy no método : chamado depois do contrutor");
     }
 
-    public String ativar(Cliente cliente) {
+    public void ativar(Cliente cliente) {
         String resultado = "SMS OU EMAIL ?";
 
         System.out.println("AtivacaoClienteService :: ativar");
@@ -48,14 +40,6 @@ public class AtivacaoClienteService {
 
         cliente.setAtivo(true);
 
-        eventPublisher.publishEvent(cliente);
-
-//        for(Notificador notificador: notificadores){
-//            System.out.printf("Para cada notificador notifica com o notificador: %s ", notificador);
-//            System.out.println("::::::::;");
-//            resultado = notificador.notificar(cliente, mensagem);
-//        }
-        return this.notificador.notificar(cliente, mensagem);
-        // return  resultado;
+        eventPublisher.publishEvent(new ClienteAtivadoEvent(cliente));
     }
 }

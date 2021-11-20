@@ -1,4 +1,4 @@
-package br.com.franca.tutorial.notificacao;
+package br.com.franca.tutorial.service.notificacao;
 
 import br.com.franca.tutorial.domain.model.Cliente;
 

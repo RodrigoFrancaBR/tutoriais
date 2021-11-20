@@ -1,5 +1,8 @@
 package br.com.franca.tutorial.domain.model.enums;
 
+/**
+ * Poderia ter usado lombok aqui... mas não quis.
+ */
 public enum Prioridade {
 
     UM(1, "um"){},
