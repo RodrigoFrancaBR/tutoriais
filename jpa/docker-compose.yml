@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+
+  dbalgafood:
+    platform: linux/x86_64
+    image: mysql
+    container_name: mysql-dbalgafood
+    command: '--default-authentication-plugin=mysql_native_password'
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_PASSWORD: root
+      MYSQL_DATABASE: dbalgafood
+      MYSQL_ROOT_HOST: '%'
+    # era utilizado antes da aplicação ser a responsável por iniciar o db com JPA.
+    #volumes:
+      #- './data/dbalgafood/backup:/var/lib/mysql'
+      #- './data/dbalgafood:/docker-entrypoint-initdb.d'
+    ports:
+      - '3306:3306'
+    networks:
+      - development-network  
+
+  adminer:
+    image: adminer
+    container_name: mysq-adminer
+    restart: always
+    ports:
+      - '8080:8080'
+    networks:
+      - development-network    
+
+networks:
+  development-network:
+    driver: bridge
