@@ -9,6 +9,7 @@ import java.math.BigDecimal;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+// só gere o equals e hashcode se eu disser quais atributos devem participar da lógica do equals e hashcode
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Data
 public class Restaurante {
