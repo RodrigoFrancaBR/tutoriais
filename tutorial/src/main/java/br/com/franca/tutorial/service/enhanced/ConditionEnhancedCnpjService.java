@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class ConditionEnhancedCnpjService {
 
-    @Value("${spring.profiles.active}")
-    private String profileActive = "test";
+    @Value("${spring.profiles.active:test}")
+    private String profileActive;
     private String service="test";
 
     @Autowired
