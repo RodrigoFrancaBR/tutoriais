@@ -2,6 +2,9 @@ package br.com.franca.tutorial.api.controller;
 
 import br.com.franca.tutorial.domain.model.Cliente;
 import br.com.franca.tutorial.service.AtivacaoClienteService;
+import br.com.franca.tutorial.service.funcionalidades.Funcionalidades;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,13 +15,16 @@ public class AtivacaoClienteController {
 
     private AtivacaoClienteService service;
 
+    @Autowired
+    private Funcionalidades funcionalidade;
+
     public AtivacaoClienteController(AtivacaoClienteService service){
         this.service = service;
     }
 
     @GetMapping("/ativar")
     public String ativar(){
-
+        funcionalidade.executarFuncionalidade();
         Cliente rodrigo = Cliente.builder()
                 .nome("Rodrigo")
                 .email("meuemail@email.com")

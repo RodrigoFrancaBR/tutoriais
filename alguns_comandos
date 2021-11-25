@@ -1,7 +1,39 @@
 empacotar o projeto (pasta target) precisa rodar o comando na raiz do projeto ./mvnw package
 roda o pacote via terminal java -jar tutorial-0.0.1-SNAPSHOT.jar 
+trocando o profille por linha de comando java -jar tutorial-0.0.1-SNAPSHOT.jar --server.port=8081
+
+clicar em modify options marcar add VMoptions
+Define parâmetros na JVM e a aplicação quando precisa dos valores, vai até a JVM pegar
+java -Dspring.profiles.active=pro -jar target/algafood-api-0.0.1-SNAPSHOT.jar
+
+Passando valores por linha de comando, neste caso ao executar a aplicação ela já tem esses valores.
+java -jar target/algafood-api-0.0.1-SNAPSHOT.jar --spring.profiles.active=pro
+
+export SERVER_PORT=8083
+echo $SERVER_PORT   
+
+quando subir a aplicação ela vai procurar por uma var SERVER_PORT e usar esse valor
 
 Para matar o processo 
 lsof -n -i4TCP:8080 
 PID é o segundo campo.
 kill -9 PID
+
+mvn clean verify sonar:sonar
+https://www.jetbrains.com/help/objc/add-environment-variables-and-program-arguments.html OK
+https://docs.spring.io/spring-boot/docs/2.1.9.RELEASE/reference/html/boot-features-external-config.html OK
+https://projectlombok.org/features/all OK
+https://martinfowler.com/bliki/DDD_Aggregate.html OK
+https://www.baeldung.com/spring-boot-health-indicators dar uma olhada
+https://www.baeldung.com/spring-feature-flags dar umaolhada
+https://www.baeldung.com/spring-conditional-annotations
+https://www.baeldung.com/spring-conditionalonproperty
+https://github.com/eugenp
+https://cloud.spring.io/spring-cloud-commons/multi/multi__spring_cloud_commons_common_abstractions.html
+https://cloud.spring.io/spring-cloud-config/multi/multi__quick_start.html
+https://www.google.com/search?q=%3CartifactId%3Espring-cloud-starter-config%3C%2FartifactId%3E&oq=%3CartifactId%3Espring-cloud-starter-config%3C%2FartifactId%3E&aqs=chrome..69i57j0i22i30l5.356j0j4&sourceid=chrome&ie=UTF-8
+https://www.baeldung.com/spring-cloud-netflix-eureka
+https://www.baeldung.com/spring-cloud-bootstrapping
+https://www.udemy.com/course/testes-de-contrato-em-java-com-pact/
+https://www.udemy.com/course/testes-de-contrato-em-java-com-pact/
+https://cloud.spring.io/spring-cloud-commons/multi/multi__spring_cloud_commons_common_abstractions.html
