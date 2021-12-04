@@ -1,0 +1,66 @@
+{
+	"info": {
+		"_postman_id": "9fb1b7dd-cbf0-4d6b-a9c1-bf9c5da716ff",
+		"name": "tutorial",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "requestComAutorização",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "algafood",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8085/api/cnpj/99999999999999",
+					"host": [
+						"localhost"
+					],
+					"port": "8085",
+					"path": [
+						"api",
+						"cnpj",
+						"99999999999999"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "requestSemAutorização",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8085/api/emitir",
+					"host": [
+						"localhost"
+					],
+					"port": "8085",
+					"path": [
+						"api",
+						"emitir"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
