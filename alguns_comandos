@@ -20,6 +20,9 @@ PID é o segundo campo.
 kill -9 PID
 
 mvn clean verify sonar:sonar
+
+acesso ao arquivo hosts /etc/hosts
+
 https://www.jetbrains.com/help/objc/add-environment-variables-and-program-arguments.html OK
 https://docs.spring.io/spring-boot/docs/2.1.9.RELEASE/reference/html/boot-features-external-config.html OK
 https://projectlombok.org/features/all OK
@@ -37,3 +40,4 @@ https://www.baeldung.com/spring-cloud-bootstrapping
 https://www.udemy.com/course/testes-de-contrato-em-java-com-pact/
 https://www.udemy.com/course/testes-de-contrato-em-java-com-pact/
 https://cloud.spring.io/spring-cloud-commons/multi/multi__spring_cloud_commons_common_abstractions.html
+solicitação de acesso => Segurança da Informação => gestão de acesso
