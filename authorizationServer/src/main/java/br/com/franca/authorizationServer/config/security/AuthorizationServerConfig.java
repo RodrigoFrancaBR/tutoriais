@@ -8,6 +8,7 @@ import org.springframework.security.oauth2.config.annotation.configurers.ClientD
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
+import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 
 @EnableAuthorizationServer
 @Configuration
@@ -23,8 +24,8 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients
                 .inMemory()
-                .withClient("myapp-angular")
-                .secret(passwordEncoder.encode("web123"))
+                .withClient("myclient-id")
+                .secret(passwordEncoder.encode("myclient-secret"))
                 .authorizedGrantTypes("password")
                 .scopes("write", "read")
                 .accessTokenValiditySeconds(60 * 60 * 6); // 6 horas (padrão é 12 horas)
@@ -33,5 +34,11 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         endpoints.authenticationManager(authenticationManager);
+    }
+
+    @Override
+    public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
+        // security.checkTokenAccess("isAuthenticated()");
+        security.checkTokenAccess("permitAll()");
     }
 }

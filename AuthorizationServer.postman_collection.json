@@ -1,0 +1,139 @@
+{
+	"info": {
+		"_postman_id": "2a1ba5fd-9e5e-4564-baf7-a95bf329af17",
+		"name": "AuthorizationServer",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "checkToken",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "myclient-secret",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "myclient-id",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "token",
+							"value": "3ceac41e-eb8a-4724-b8c8-78571f1a70ba",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8085/oauth/check_token",
+					"host": [
+						"localhost"
+					],
+					"port": "8085",
+					"path": [
+						"oauth",
+						"check_token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "checkTokenSemAuth",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "token",
+							"value": "3ceac41e-eb8a-4724-b8c8-78571f1a70ba",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8085/oauth/check_token",
+					"host": [
+						"localhost"
+					],
+					"port": "8085",
+					"path": [
+						"oauth",
+						"check_token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "obterToken",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "myclient-secret",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "myclient-id",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "rfrancacosta@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8085/oauth/token",
+					"host": [
+						"localhost"
+					],
+					"port": "8085",
+					"path": [
+						"oauth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
