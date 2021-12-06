@@ -15,3 +15,11 @@ spring:
     console:
       enabled: true
       path: /h2
+
+  security:
+    oauth2:
+      resourceserver:
+        opaquetoken:
+          introspection-uri: http://localhost:8085/oauth/check_token
+          client-id: myclient-id
+          client-secret: myclient-secret
