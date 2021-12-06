@@ -3,7 +3,6 @@ package br.com.franca.authorizationServer.config.security;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
@@ -27,27 +26,35 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        clients
-                .inMemory()
-                .withClient("myclient-id")
-                .secret(passwordEncoder.encode("myclient-secret"))
+
+        clients.inMemory()
+                .withClient("WebApplicationClientId")
+                .secret(passwordEncoder.encode("WebApplicationClientSecret"))
                 .authorizedGrantTypes("password", "refresh_token")
                 .scopes("write", "read")
                 .accessTokenValiditySeconds(6 * 60 * 60)// 6 horas
-                .refreshTokenValiditySeconds(60 * 24 * 60 * 60); // 60 dias
+                .refreshTokenValiditySeconds(60 * 24 * 60 * 60) // 60 dias
+
+                .and()
+                .withClient("BatchApplicationClientId")
+                .secret(passwordEncoder.encode("BatchApplicationClientSecret"))
+                .authorizedGrantTypes("client_credentials")
+                .scopes("write", "read");
     }
 
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         endpoints
                 .authenticationManager(authenticationManager)
-                .userDetailsService(userDetailsService);
+                .userDetailsService(userDetailsService)
+                .reuseRefreshTokens(false);
     }
 
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
         // security.checkTokenAccess("isAuthenticated()");
         security.checkTokenAccess("permitAll()");
+
     }
 
 }

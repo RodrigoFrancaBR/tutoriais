@@ -13,12 +13,12 @@
 					"basic": [
 						{
 							"key": "password",
-							"value": "myclient-secret",
+							"value": "{{CLIENT_SECRET}}",
 							"type": "string"
 						},
 						{
 							"key": "username",
-							"value": "myclient-id",
+							"value": "{{CLIENT_ID}}",
 							"type": "string"
 						}
 					]
@@ -30,7 +30,7 @@
 					"urlencoded": [
 						{
 							"key": "token",
-							"value": "3ceac41e-eb8a-4724-b8c8-78571f1a70ba",
+							"value": "0e4946c1-ad4e-4ba3-9aad-ab7fb4fdd62f",
 							"type": "text"
 						}
 					]
@@ -62,7 +62,7 @@
 					"urlencoded": [
 						{
 							"key": "token",
-							"value": "3ceac41e-eb8a-4724-b8c8-78571f1a70ba",
+							"value": "0e4946c1-ad4e-4ba3-9aad-ab7fb4fdd62f",
 							"type": "text"
 						}
 					]
@@ -89,12 +89,12 @@
 					"basic": [
 						{
 							"key": "password",
-							"value": "myclient-secret",
+							"value": "{{CLIENT_SECRET}}",
 							"type": "string"
 						},
 						{
 							"key": "username",
-							"value": "myclient-id",
+							"value": "{{CLIENT_ID}}",
 							"type": "string"
 						}
 					]
@@ -106,17 +106,17 @@
 					"urlencoded": [
 						{
 							"key": "username",
-							"value": "rfrancacosta@gmail.com",
+							"value": "{{USER_NAME}}",
 							"type": "text"
 						},
 						{
 							"key": "password",
-							"value": "123456",
+							"value": "{{PASSWORD}}",
 							"type": "text"
 						},
 						{
 							"key": "grant_type",
-							"value": "password",
+							"value": "{{GRANT_TYPE}}",
 							"type": "text"
 						}
 					]
@@ -134,6 +134,69 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "refreshToken",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "myclient-secret",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "myclient-id",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "refresh_token",
+							"value": "42354f4e-7e90-472e-a75a-4525c0643e7d",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "refresh_token",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8085/oauth/token",
+					"host": [
+						"localhost"
+					],
+					"port": "8085",
+					"path": [
+						"oauth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "CLIENT_ID",
+			"value": "WebApplicationClientId"
+		},
+		{
+			"key": "CLIENT_SECRET",
+			"value": "WebApplicationClientSecret"
+		},
+		{
+			"key": "GRANT_TYPE",
+			"value": "password"
 		}
 	]
 }
