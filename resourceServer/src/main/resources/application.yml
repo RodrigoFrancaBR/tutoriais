@@ -23,3 +23,7 @@ spring:
           introspection-uri: http://localhost:8085/oauth/check_token
           client-id: WebApplicationClientId
           client-secret: WebApplicationClientSecret
+
+loggly:
+  logging:
+    token: ${LOGGLY_LOGGING_TOKEN}
