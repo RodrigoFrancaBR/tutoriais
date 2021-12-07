@@ -32,21 +32,21 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .roles("operator");
     }
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http
-                 .formLogin()
-             .and()
-                .httpBasic()
-            .and()
-                .authorizeRequests()
-                .antMatchers("/api/emitir").permitAll()
-                .anyRequest().authenticated()
-            .and()
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-            .and()
-                .csrf().disable();
-    }
+//    @Override
+//    protected void configure(HttpSecurity http) throws Exception {
+//        http
+//                 .formLogin()
+//             .and()
+//                .httpBasic()
+//            .and()
+//                .authorizeRequests()
+//                .antMatchers("/api/emitir").permitAll()
+//                .anyRequest().authenticated()
+//            .and()
+//                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+//            .and()
+//                .csrf().disable();
+//    }
 
     @Bean
     @Override
