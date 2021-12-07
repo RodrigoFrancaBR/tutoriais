@@ -183,6 +183,60 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "obterToken_Authorization Code",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "OtherWebApplicationClientSecret",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "OtherWebApplicationClientId",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "code",
+							"value": "n1py1x",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "authorization_code",
+							"type": "text"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "http://aplicacao-cliente",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8085/oauth/token",
+					"host": [
+						"localhost"
+					],
+					"port": "8085",
+					"path": [
+						"oauth",
+						"token"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"variable": [
