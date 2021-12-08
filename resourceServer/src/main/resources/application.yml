@@ -26,4 +26,4 @@ spring:
 
 loggly:
   logging:
-    token: ${LOGGLY_LOGGING_TOKEN}
+    token: ${LOGGLY_LOGGING_TOKEN:32131321312313}

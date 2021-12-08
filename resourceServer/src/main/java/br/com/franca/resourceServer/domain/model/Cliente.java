@@ -21,7 +21,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Builder
 @Entity
-public class Cliente implements Serializable {
+public class Cliente  implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -35,4 +35,5 @@ public class Cliente implements Serializable {
 
     @Column(name = "cpf")
     private String cpf;
+
 }

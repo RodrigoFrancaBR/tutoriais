@@ -74,6 +74,14 @@ public class ClienteController {
     }
 
 
+    @GetMapping(path = "/simular")
+    @ResponseStatus(HttpStatus.OK)
+    public void simularAuditoria(){
+        log.info("Simulando uma auditoria");
+        service.simular();
+
+    }
+
 
 
 }
