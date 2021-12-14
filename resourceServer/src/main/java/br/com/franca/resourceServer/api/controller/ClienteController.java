@@ -5,8 +5,6 @@ import br.com.franca.resourceServer.domain.service.ClienteService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,7 +25,6 @@ import java.util.List;
 @RequestMapping(path = "clientes")
 public class ClienteController {
 
-    // private static final Logger log = LoggerFactory.getLogger(ClienteController.class);
     private final ClienteService service;
     private final ModelMapper mapper;
 
@@ -36,7 +33,6 @@ public class ClienteController {
     public List<Cliente> obter(){
         log.info("Obtendo os clientes");
         return service.obter();
-
     }
 
     @GetMapping("/{id}")
@@ -72,16 +68,5 @@ public class ClienteController {
                     return Void.TYPE;
                 }).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente nao encontrado."));
     }
-
-
-    @GetMapping(path = "/simular")
-    @ResponseStatus(HttpStatus.OK)
-    public void simularAuditoria(){
-        log.info("Simulando uma auditoria");
-        service.simular();
-
-    }
-
-
 
 }
