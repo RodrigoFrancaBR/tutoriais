@@ -274,7 +274,7 @@ target/
 /nbproject/private/
 /nbbuild/
 /dist/
-/nbdist/
+/nbdist/ß
 /.nb-gradle/
 build/
 !**/src/main/**/build/
@@ -282,3 +282,23 @@ build/
 
 ### VS Code ###
 .vscode/
+./Users/rodrigocosta/Documents/GitHub/tutoriais/myAppMongoDB/data/**
+.DS_Store
+*.wt
+*.2021-12-22
+*.2021-12-22T23-43-03Z-00000
+*.2021-12-23T00-19-41Z-00000
+*.interim
+*.2021-12-22T23-42-56Z-00000
+*.2021-12-23T00-21-54Z-00000
+*.2021-12-23T00-24-09Z-00000
+*.turtle
+*.2021-12-23T00-38-34Z-00000
+.DS_Store
+.DS_Store
+*.0000000006
+*.bson
+*.lock
+*.0000000002
+*.0000000001
+myAppMongoDB/data/WiredTiger
