@@ -295,10 +295,12 @@ build/
 *.turtle
 *.2021-12-23T00-38-34Z-00000
 .DS_Store
-.DS_Store
 *.0000000006
 *.bson
 *.lock
 *.0000000002
 *.0000000001
 myAppMongoDB/data/WiredTiger
+/foodanalytics/node_modules/
+*.DS_Store
+node_modules

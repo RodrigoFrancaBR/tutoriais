@@ -18,7 +18,7 @@ public class ResourceServerConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 // .and().csrf().disable()
                 // .and().headers().frameOptions().sameOrigin()
-                .and()
+                .and().cors().and()
                 .oauth2ResourceServer().opaqueToken();
     }
 

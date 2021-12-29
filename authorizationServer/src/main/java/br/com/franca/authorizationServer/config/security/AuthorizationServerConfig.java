@@ -40,16 +40,17 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                 .secret(passwordEncoder.encode("OtherWebApplicationClientSecret"))
                 .authorizedGrantTypes("authorization_code")
                 .scopes("write", "read")
-                .redirectUris("http://aplicacao-cliente")
+                .redirectUris("http://localhost:8080")
 
             .and()
                     .withClient("BatchApplicationClientId")
                         .secret(passwordEncoder.encode("BatchApplicationClientSecret"))
                         .authorizedGrantTypes("client_credentials")
-                        .scopes("write", "read");
+                        .scopes("write", "read")
 
-
-
+            .and()
+                    .withClient("ResourcerServerCheckTokenID")
+                    .secret(passwordEncoder.encode("ResourcerServerCheckTokenSecret"));
     }
 
     @Override
@@ -64,7 +65,6 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
         // security.checkTokenAccess("isAuthenticated()");
         security.checkTokenAccess("permitAll()");
-
     }
 
 }
