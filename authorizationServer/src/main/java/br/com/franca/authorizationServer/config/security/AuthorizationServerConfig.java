@@ -42,7 +42,8 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
                 .and()
                 .withClient("OtherWebApplicationClientId")
-                .secret(passwordEncoder.encode("OtherWebApplicationClientSecret"))
+//                .secret(passwordEncoder.encode("OtherWebApplicationClientSecret"))
+                .secret(passwordEncoder.encode(""))
                 .authorizedGrantTypes("authorization_code")
                 .scopes("write", "read")
                 .redirectUris("http://localhost:8080")
