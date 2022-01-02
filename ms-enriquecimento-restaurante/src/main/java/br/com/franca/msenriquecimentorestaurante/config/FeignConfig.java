@@ -35,4 +35,8 @@ public class FeignConfig implements RequestInterceptor {
         log.info("fim apply():::::::");
     }
 
+    @Bean
+    public Client client(){
+        return new CustomFeignClient(null, null);
+    }
 }

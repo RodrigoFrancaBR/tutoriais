@@ -8,7 +8,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@FeignClient(name = "api-enriquecimento", url = "http://localhost:8090/api/enriquecimento/restaurante")
+@FeignClient(name = "api-enriquecimento", url = "http://localhost:8090/api/enriquecimento/restaurante", configuration = FeignConfig.class)
 public interface IEnriquecimentoRestauranteClient {
 
     @GetMapping(path="id", produces = MediaType.TEXT_XML_VALUE)
