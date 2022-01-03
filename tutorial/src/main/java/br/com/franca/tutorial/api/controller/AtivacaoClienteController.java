@@ -3,6 +3,7 @@ package br.com.franca.tutorial.api.controller;
 import br.com.franca.tutorial.domain.model.Cliente;
 import br.com.franca.tutorial.service.AtivacaoClienteService;
 import br.com.franca.tutorial.service.funcionalidades.Funcionalidades;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,14 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api")
 public class AtivacaoClienteController {
 
+    @Autowired
     private AtivacaoClienteService service;
 
     @Autowired
     private Funcionalidades funcionalidade;
-
-    public AtivacaoClienteController(AtivacaoClienteService service){
-        this.service = service;
-    }
 
     @GetMapping("/ativar")
     public String ativar(){
