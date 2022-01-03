@@ -5,6 +5,7 @@ import br.com.franca.msenriquecimentorestaurante.domain.AuthenticatedUser;
 import br.com.franca.msenriquecimentorestaurante.domain.model.Restaurante;
 import br.com.franca.msenriquecimentorestaurante.domain.repository.RestauranteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -27,6 +28,7 @@ public class RestauranteService {
         return client.getRestaurante(id);
     }
 
+    @Cacheable("enriquecimentoToken")
     public AuthenticatedUser login() {
         var authenticatedUser = client.getToken(usuario, senha, cliente);
         return authenticatedUser;
