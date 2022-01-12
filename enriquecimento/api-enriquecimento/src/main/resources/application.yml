@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    username: root
+    url: jdbc:mysql://localhost/db_api_enriquecimento?createDatabaseIfNotExist=true&serverTimezone=UTC
+    password: root
+  jpa:
+    #generate-ddl: 'true'
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL57Dialect
+        format_sql: 'true'
+    hibernate:
+      #ddl-auto: create
+    show-sql: 'true'
+server:
+  port: '8090'

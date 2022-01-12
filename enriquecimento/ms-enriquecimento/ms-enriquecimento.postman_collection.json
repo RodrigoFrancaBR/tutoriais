@@ -1,0 +1,32 @@
+{
+	"info": {
+		"_postman_id": "90f3acbd-9f8e-4516-b917-2c60ce5b8dab",
+		"name": "ms-enriquecimento",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "enriquecer-cliente",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8091/api/enriquecimento/clientes/id/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8091",
+					"path": [
+						"api",
+						"enriquecimento",
+						"clientes",
+						"id",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

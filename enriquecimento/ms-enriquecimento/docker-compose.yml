@@ -1,0 +1,34 @@
+version: '3'
+
+services:
+
+  db:
+    platform: linux/x86_64
+    image: mysql
+    container_name: db-enriquecimento
+    command: '--default-authentication-plugin=mysql_native_password'
+    restart: always
+
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_PASSWORD: root
+      MYSQL_DATABASE: db_enriquecimento
+      MYSQL_ROOT_HOST: '%'
+
+    ports:
+      - '3307:3306'
+
+    networks:
+      - development-network
+
+  adminer:
+    image: adminer
+    container_name: adminer-db-enriquecimento
+    restart: always
+  # não consegui acessar o adminer uma vez que outro countainer do adminer estava em pé
+    ports:
+      - '8083:8080'
+
+networks:
+  development-network:
+    driver: bridge
