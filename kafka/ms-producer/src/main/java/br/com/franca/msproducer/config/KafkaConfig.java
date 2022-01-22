@@ -8,6 +8,7 @@ import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.kafka.config.TopicBuilder;
 import org.springframework.kafka.core.DefaultKafkaProducerFactory;
 import org.springframework.kafka.core.KafkaAdmin;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -15,9 +16,6 @@ import org.springframework.kafka.core.ProducerFactory;
 
 import java.util.HashMap;
 
-/**
- *
- */
 @RequiredArgsConstructor
 @Configuration
 public class KafkaConfig {
@@ -46,9 +44,12 @@ public class KafkaConfig {
         return new KafkaTemplate<>(factory());
     }
 
-    // o kafka cria topicos caso o tópico não exista
-    // É possível riar os tópicos pela aplicação
-
+    /**
+     * O Kafka cria tópicos caso o tópico não exista e
+     * é possivel criar os tópicos pela aplicação conforme abaixo
+     *
+     * @return
+     */
     @Bean
     public KafkaAdmin kafkaAdmin() {
         var configs = new HashMap<String, Object>();
@@ -56,8 +57,31 @@ public class KafkaConfig {
         return new KafkaAdmin(configs);
     }
 
+    /**
+     1 Tópico será criado conforme as configurações abaixo:
+     Nome do tópico, Partiçoes e Replicas
+
+     @Bean public NewTopic topic() {
+     return new NewTopic("topic-1", 10, Short.valueOf("1"));
+     }
+     */
+
+    /**
+     * 2 - Tópico será criado apartir do que está configurado no broker
+     */
     @Bean
     public NewTopic topic() {
-        return new NewTopic("topic-1", 10, Short.valueOf("1"));
+        return TopicBuilder.name("topic-2").build();
+    }
+
+    /**
+     * 3 - Criação de vários tópico
+     */
+    @Bean
+    public KafkaAdmin.NewTopics topics() {
+        return new KafkaAdmin.NewTopics(
+                TopicBuilder.name("topic-3").build(),
+                TopicBuilder.name("topic-4").build()
+        );
     }
 }

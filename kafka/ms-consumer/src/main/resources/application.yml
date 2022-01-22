@@ -1,10 +1,8 @@
-
-server:
-  port: '9091'
-
-#endereço do kafka
+#endereï¿½o do kafka
 spring:
   kafka:
     bootstrap-servers: localhost:29092
 
+server:
+  port: '9091'
 
