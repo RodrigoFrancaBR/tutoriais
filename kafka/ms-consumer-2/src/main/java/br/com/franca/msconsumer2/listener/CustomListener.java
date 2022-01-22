@@ -11,7 +11,7 @@ import java.util.List;
 public class CustomListener {
 
     // vou ouvir o topic-1
-    @KafkaListener(topics = "topic-1", groupId = "group-1")
+    @KafkaListener(topics = "topic-1", groupId = "group-2")
     public void listen(List<String> messages) {
         log.info("Thread: {} ", Thread.currentThread().getId(), messages);
         log.info("received: {} ", messages);
