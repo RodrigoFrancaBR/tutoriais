@@ -27,7 +27,7 @@ public class KafkaConfig {
      */
     @Bean
     public ProducerFactory<String, String> factory() {
-        var configs = new HashMap<String, Object>();
+        HashMap configs = new HashMap<String, Object>();
 
         // endereço do broker
         configs.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, properties.getBootstrapServers());
@@ -52,7 +52,7 @@ public class KafkaConfig {
      */
     @Bean
     public KafkaAdmin kafkaAdmin() {
-        var configs = new HashMap<String, Object>();
+        HashMap configs = new HashMap<String, Object>();
         configs.put(AdminClientConfig.BOOTSTRAP_SERVERS_CONFIG, properties.getBootstrapServers());
         return new KafkaAdmin(configs);
     }

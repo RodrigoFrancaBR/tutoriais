@@ -11,10 +11,10 @@
     </parent>
 
     <groupId>br.com.franca</groupId>
-    <artifactId>ms-producer</artifactId>
+    <artifactId>ms-consumer-2</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>ms-producer</name>
-    <description>producer</description>
+    <name>ms-consumer-2</name>
+    <description>MS que vai consumir o mesmo tópico no mesmo broker</description>
 
     <properties>
         <java.version>11</java.version>

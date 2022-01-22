@@ -1,0 +1,9 @@
+
+#endere?o do kafka
+spring:
+  kafka:
+    bootstrap-servers: localhost:29092
+
+server:
+  port: '9092'
+

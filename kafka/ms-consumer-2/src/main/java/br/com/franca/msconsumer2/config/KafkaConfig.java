@@ -1,4 +1,4 @@
-package br.com.franca.msconsumer.config;
+package br.com.franca.msconsumer2.config;
 
 import lombok.RequiredArgsConstructor;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
@@ -22,7 +22,7 @@ public class KafkaConfig {
     //    qual broker vai consumir e formas de descerializar
     @Bean
     public ConsumerFactory<String, String> consumerFactory() {
-        HashMap configs = new HashMap<String, Object>();
+        var configs = new HashMap<String, Object>();
         configs.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, properties.getBootstrapServers());
         configs.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         configs.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
@@ -32,7 +32,7 @@ public class KafkaConfig {
     //    listener container com outros listener
     @Bean
     public ConcurrentKafkaListenerContainerFactory<String, String> kafkaListenerContainerFactory() {
-        ConcurrentKafkaListenerContainerFactory factory = new ConcurrentKafkaListenerContainerFactory<String, String>();
+        var factory = new ConcurrentKafkaListenerContainerFactory<String, String>();
         factory.setConsumerFactory(consumerFactory());
         return factory;
     }
