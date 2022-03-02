@@ -12,9 +12,9 @@ services:
       MYSQL_PASSWORD: root
       MYSQL_DATABASE: "api_enriquecimento"
 #      MYSQL_ROOT_HOST: '%'
-    volumes:
-      - './data/enriquecimento/backup:/var/lib/mysql'
-      - './data/enriquecimento:/docker-entrypoint-initdb.d'
+#    volumes:
+#      - './data/enriquecimento/backup:/var/lib/mysql'
+#      - './data/enriquecimento:/docker-entrypoint-initdb.d'
     ports:
       - '3306:3306'
     networks:
