@@ -1,4 +1,4 @@
-CREATE TABLE `db_api_enriquecimento`.`tb_cliente` (
+CREATE TABLE `api_enriquecimento`.`TB_PESSOA` (
   `id` int NOT NULL,
   `nome` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
@@ -6,7 +6,7 @@ CREATE TABLE `db_api_enriquecimento`.`tb_cliente` (
   PRIMARY KEY (`id`)
 )ENGINE=InnoDB;
 
-INSERT INTO `db_api_enriquecimento`.`tb_cliente` (
+INSERT INTO `api_enriquecimento`.`TB_PESSOA` (
   `id`,
   `nome`,
   `email`,

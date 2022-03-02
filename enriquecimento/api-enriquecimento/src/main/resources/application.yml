@@ -1,7 +1,10 @@
+server:
+  port: 8081
+
 spring:
   datasource:
     username: root
-    url: jdbc:mysql://localhost/db_api_enriquecimento?createDatabaseIfNotExist=true&serverTimezone=UTC
+    url: jdbc:mysql://localhost/api_enriquecimento?createDatabaseIfNotExist=true&serverTimezone=UTC
     password: root
   jpa:
     #generate-ddl: 'true'
@@ -12,5 +15,3 @@ spring:
     hibernate:
       #ddl-auto: create
     show-sql: 'true'
-server:
-  port: '8090'

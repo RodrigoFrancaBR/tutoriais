@@ -1,41 +1,32 @@
-version: '3'
+#version: '3'
+version: '3.9'
 
 services:
-
   db:
     platform: linux/x86_64
     image: mysql
-    container_name: db-api-enriquecimento
-    command: '--default-authentication-plugin=mysql_native_password'
-    restart: always
-
+    container_name: mysql-api-enriquecimento
+    command: --default-authentication-plugin=mysql_native_password
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_PASSWORD: root
-      MYSQL_DATABASE: db_api_enriquecimento
-      MYSQL_ROOT_HOST: '%'
-      # era utilizado antes da aplicação ser a responsável por iniciar o db com JPA.
-
+      MYSQL_DATABASE: "api_enriquecimento"
+#      MYSQL_ROOT_HOST: '%'
     volumes:
       - './data/enriquecimento/backup:/var/lib/mysql'
       - './data/enriquecimento:/docker-entrypoint-initdb.d'
-
     ports:
       - '3306:3306'
-
     networks:
       - development-network
-
   adminer:
     image: adminer
-    container_name: adminer-db-api-enriquecimento
-    restart: always
-
+    container_name: adminer-api-enriquecimento
+    restart: on-failure
     ports:
       - '8082:8080'
     networks:
       - development-network
-
 networks:
   development-network:
     driver: bridge

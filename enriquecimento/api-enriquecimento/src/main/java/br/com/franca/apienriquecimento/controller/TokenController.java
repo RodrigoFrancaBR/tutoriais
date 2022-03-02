@@ -1,4 +1,4 @@
-package br.com.franca.apienriquecimento.api.controller;
+package br.com.franca.apienriquecimento.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
 @RestController
-@RequestMapping("api/enriquecimento/clientes")
+@RequestMapping("api/enriquecimento/pessoas")
 public class TokenController {
 
     @GetMapping(path = "token", produces = MediaType.TEXT_XML_VALUE)
     public String obterToken(@RequestParam String usuario, @RequestParam String senha, @RequestParam String cliente) throws JsonProcessingException {
-        log.info("inicio obterToken()");
+        log.info("inicio usuario: {}, senha: {}, cliente: {}");
         ObjectMapper xmlMapper = new XmlMapper();
         return xmlMapper.writeValueAsString("tokenXYZ");
     }

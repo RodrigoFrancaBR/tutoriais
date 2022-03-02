@@ -11,26 +11,26 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8090/api/enriquecimento/clientes/id?id=1&token=xyz",
+					"raw": "http://localhost:8081/api/enriquecimento/pessoas/id?id=2&token=tokenXYZ",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "8090",
+					"port": "8081",
 					"path": [
 						"api",
 						"enriquecimento",
-						"clientes",
+						"pessoas",
 						"id"
 					],
 					"query": [
 						{
 							"key": "id",
-							"value": "1"
+							"value": "2"
 						},
 						{
 							"key": "token",
-							"value": "xyz"
+							"value": "tokenXYZ"
 						}
 					]
 				}
