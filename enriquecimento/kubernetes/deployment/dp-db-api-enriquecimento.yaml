@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dp-db-api-enriquecimento
+spec:
+  selector:
+    matchLabels:
+      app: pod-db-api-enriquecimento
+  template:
+    metadata:
+      name: pod-db-api-enriquecimento
+      labels:
+        app: pod-db-api-enriquecimento
+    spec:
+      containers:
+        # container-name
+        - name: ct-db-api-enriquecimento
+          image: mysql
+          imagePullPolicy: Never
+        # volume-path-container / volume-name-container    
+          volumeMounts:
+            - mountPath: /var/lib/mysql
+              name: db-bkp-api-enriquecimento
+            - mountPath: /docker-entrypoint-initdb.d
+              name: db-scripts-api-enriquecimento
+          ports:
+          - containerPort: 3306
+          envFrom:           
+            - configMapRef:
+                name: cm-db-api-enriquecimento
+      # volume-path-container / host-path 
+      volumes:
+        - name: db-bkp-api-enriquecimento
+          persistentVolumeClaim:          
+            claimName: pvc-db-bkp-api-enriquecimento
+        - name: db-scripts-api-enriquecimento
+          persistentVolumeClaim:          
+            claimName: pvc-db-scripts-api-enriquecimento
+  replicas: 1
+      

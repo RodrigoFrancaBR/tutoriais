@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-cip-db-api-enriquecimento
+spec:
+  type: ClusterIP
+  selector:
+    app: pod-db-api-enriquecimento
+  ports:
+  - port: 3306
+    #targetPort: 80

@@ -1,0 +1,33 @@
+# Definir a versão da API
+apiVersion: apps/v1
+# Definir o tipo do arquivo de definição
+kind: Deployment
+# Quais são os metadados desse deployment?
+metadata:
+  name: dp-api-enriquecimento
+# Quais são as especificações desse deployment?
+spec:
+# Selecione o template
+  selector:
+    matchLabels:
+      app: pod-api-enriquecimento
+  # Definir um template
+  template:
+    metadata:
+      name: pod-api-enriquecimento
+      #Definir uma etiqueta para o pod ser encontrado por algum serviço
+      labels:
+        app: pod-api-enriquecimento
+    spec:
+      containers:
+        # container-name
+        - name: ct-api-enriquecimento
+          imagePullPolicy: Never
+          image: api-enriquecimento:latest        
+          ports:
+          - containerPort: 8080
+          envFrom:           
+            - configMapRef:
+                name: cm-api-enriquecimento
+  replicas: 2
+      

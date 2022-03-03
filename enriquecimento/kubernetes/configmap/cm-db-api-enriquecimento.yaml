@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cm-db-api-enriquecimento
+data:
+  MYSQL_ROOT_PASSWORD: root
+  MYSQL_DATABASE: api_enriquecimento
+  MYSQL_PASSWORD: root
