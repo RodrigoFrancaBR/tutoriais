@@ -3,7 +3,7 @@ package br.com.franca.authorizationServer.config.security;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.redis.connection.RedisConnectionFactory;
+//import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -24,17 +24,17 @@ import java.util.List;
 @Configuration
 public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
 
-    @Autowired
-    UserDetailsService userDetailsService;
+//    @Autowired
+//    UserDetailsService userDetailsService;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
 
     @Autowired
     private AuthenticationManager authenticationManager;
-
-    @Autowired
-    private RedisConnectionFactory redisConnectionFactory;
+//
+//    @Autowired
+//    private RedisConnectionFactory redisConnectionFactory;
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
@@ -42,61 +42,64 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
         clients.inMemory()
                 .withClient("WebApplicationClientId")
                     .secret(passwordEncoder.encode("WebApplicationClientSecret"))
-                    .authorizedGrantTypes("password", "refresh_token")
+                    // .authorizedGrantTypes("password", "refresh_token")
+                    .authorizedGrantTypes("password")
+
+                    ///.authorizedGrantTypes("password", "refresh_token")
                     .scopes("write", "read")
                     .accessTokenValiditySeconds(6 * 60 * 60)// 6 horas
-                    .refreshTokenValiditySeconds(60 * 24 * 60 * 60) // 60 dias
+                    ///.refreshTokenValiditySeconds(60 * 24 * 60 * 60) // 60 dias
 
-                .and()
-                .withClient("OtherWebApplicationClientId")
-//                .secret(passwordEncoder.encode("OtherWebApplicationClientSecret"))
-                .secret(passwordEncoder.encode(""))
-                .authorizedGrantTypes("authorization_code")
-                .scopes("write", "read")
-                .redirectUris("http://localhost:8080")
-
+//                .and()
+//                .withClient("OtherWebApplicationClientId")
+////                .secret(passwordEncoder.encode("OtherWebApplicationClientSecret"))
+//                .secret(passwordEncoder.encode(""))
+//                .authorizedGrantTypes("authorization_code")
+//                .scopes("write", "read")
+//                .redirectUris("http://localhost:8080")
+//
+//            .and()
+//                    .withClient("BatchApplicationClientId")
+//                        .secret(passwordEncoder.encode("BatchApplicationClientSecret"))
+//                        .authorizedGrantTypes("client_credentials")
+//                        .scopes("write", "read")
+//
             .and()
-                    .withClient("BatchApplicationClientId")
-                        .secret(passwordEncoder.encode("BatchApplicationClientSecret"))
-                        .authorizedGrantTypes("client_credentials")
-                        .scopes("write", "read")
-
-            .and()
-                    .withClient("ResourcerServerCheckTokenID")
-                    .secret(passwordEncoder.encode("ResourcerServerCheckTokenSecret"));
+                    .withClient("ResourcerServerClientID")
+                    .secret(passwordEncoder.encode("ResourcerServerClientSecret"));
     }
 
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         endpoints
-                .authenticationManager(authenticationManager)
-                .userDetailsService(userDetailsService)
-                .reuseRefreshTokens(false)
-                .tokenStore(redisTokenStore())
-                .tokenGranter(tokenGranter(endpoints));
+                .authenticationManager(authenticationManager);
+//                .userDetailsService(userDetailsService)
+//                .reuseRefreshTokens(false)
+//                .tokenStore(redisTokenStore())
+//                .tokenGranter(tokenGranter(endpoints));
     }
 
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
-        // security.checkTokenAccess("isAuthenticated()");
-        security.checkTokenAccess("permitAll()")
-                .allowFormAuthenticationForClients();
+        security.checkTokenAccess("isAuthenticated()");
+        // security.checkTokenAccess("permitAll()");
+                // .allowFormAuthenticationForClients();
     }
 
-    private TokenGranter tokenGranter(AuthorizationServerEndpointsConfigurer endpoints) {
-        PkceAuthorizationCodeTokenGranter pkceAuthorizationCodeTokenGranter = new PkceAuthorizationCodeTokenGranter(endpoints.getTokenServices(),
-                endpoints.getAuthorizationCodeServices(), endpoints.getClientDetailsService(),
-                endpoints.getOAuth2RequestFactory());
-
-        List<TokenGranter> granters = Arrays.asList(
-                pkceAuthorizationCodeTokenGranter, endpoints.getTokenGranter());
-
-        return new CompositeTokenGranter(granters);
-    }
-
-    @Bean
-    public TokenStore redisTokenStore(){
-        return new RedisTokenStore(redisConnectionFactory);
-    }
+//    private TokenGranter tokenGranter(AuthorizationServerEndpointsConfigurer endpoints) {
+//        PkceAuthorizationCodeTokenGranter pkceAuthorizationCodeTokenGranter = new PkceAuthorizationCodeTokenGranter(endpoints.getTokenServices(),
+//                endpoints.getAuthorizationCodeServices(), endpoints.getClientDetailsService(),
+//                endpoints.getOAuth2RequestFactory());
+//
+//        List<TokenGranter> granters = Arrays.asList(
+//                pkceAuthorizationCodeTokenGranter, endpoints.getTokenGranter());
+//
+//        return new CompositeTokenGranter(granters);
+//    }
+//
+//    @Bean
+//    public TokenStore redisTokenStore(){
+//        return new RedisTokenStore(redisConnectionFactory);
+//    }
 
 }

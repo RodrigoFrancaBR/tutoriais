@@ -23,13 +23,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         System.out.println("Senha: " + bCryptPasswordEncoder.encode("123"));
 
         auth.inMemoryAuthentication()
-                .withUser("rfrancacosta@gmail.com")
+                .withUser("resourceOwnerClient1")
                     .password(bCryptPasswordEncoder.encode("123456"))
-                    .roles("admin")
-                .and()
-                .withUser("bpaulalima@gmail.com")
-                .password(bCryptPasswordEncoder.encode("123456789"))
-                    .roles("operator");
+                    .roles("admin");
+
+//                .and()
+//                .withUser("resourceOwnerClient2")
+//                .password(bCryptPasswordEncoder.encode("123456789"))
+//                    .roles("operator");
     }
 
 //    @Override
@@ -54,9 +55,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return super.authenticationManager();
     }
 
-    @Bean
-    @Override
-    protected UserDetailsService userDetailsService() {
-        return super.userDetailsService();
-    }
+//    @Bean
+//    @Override
+//    protected UserDetailsService userDetailsService() {
+//        return super.userDetailsService();
+//    }
 }

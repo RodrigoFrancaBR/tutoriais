@@ -20,14 +20,10 @@ public class PessoaController {
     private PessoaService service;
 
     @GetMapping(path = "id", produces = MediaType.TEXT_XML_VALUE)
-    public Pessoa findById(@RequestParam Long id, @RequestParam String token) {
+    public Pessoa findById(@RequestParam Long id
+                           // , @RequestParam String token
+    ) {
         log.info("inicio id: {}, token: {}");
-
-        if (!token.equals("tokenXYZ")) {
-            log.error(Erro.TOKEN_INVALIDO.getValor());
-            throw new RuntimeException(Erro.TOKEN_INVALIDO.getValor());
-        }
-
         return service.findById(id);
 
     }

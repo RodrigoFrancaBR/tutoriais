@@ -8,15 +8,70 @@
 		{
 			"name": "enquiquecimento-clientes",
 			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "clientSecret",
+							"value": "secret",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "client_id",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "{{AccessTokenURLCC}}",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "BatchToken",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "rfrancacosta@gmail.com",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8081/api/enriquecimento/pessoas/id?id=2&token=tokenXYZ",
+					"raw": "http://localhost:8080/api/enriquecimento/pessoas/id?id=1",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "8081",
+					"port": "8080",
 					"path": [
 						"api",
 						"enriquecimento",
@@ -26,11 +81,7 @@
 					"query": [
 						{
 							"key": "id",
-							"value": "2"
-						},
-						{
-							"key": "token",
-							"value": "tokenXYZ"
+							"value": "1"
 						}
 					]
 				}
@@ -41,18 +92,24 @@
 			"name": "enquiquecimento-token",
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer a1d10d13-7e00-4786-836b-7baada6f0035",
+						"type": "text"
+					}
+				],
 				"url": {
-					"raw": "http://localhost:8090/api/enriquecimento/clientes/token?usuario=root1&senha=root&cliente=Franca",
+					"raw": "http://localhost:8080/api/enriquecimento/pessoas/token?usuario=root1&senha=root&cliente=Franca",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "8090",
+					"port": "8080",
 					"path": [
 						"api",
 						"enriquecimento",
-						"clientes",
+						"pessoas",
 						"token"
 					],
 					"query": [
@@ -68,6 +125,90 @@
 							"key": "cliente",
 							"value": "Franca"
 						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "obterToken",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{CLIENT_SECRET}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{CLIENT_ID}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "{{RESOURCE_OWNER_USER}}",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "{{RESOURCE_OWNER_PASSWORD}}",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "{{GRANT_TYPE}}",
+							"type": "text"
+						},
+						{
+							"key": "code",
+							"value": "dn20VR",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "redirect_uri",
+							"value": "{{REDIRECT_URI}}",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "code_verifier",
+							"value": "QzUUDT1y0k6O6-oz9Krsj9ZB-nlz0a1fiXg9ye3Uq_MH4WwJvbYTDLX~CO4QOydnBepEGE7hrR-l2lxkv.7ZvHnYVelz7JPuRQnM_n7mP8rHqZJEcE.tz38KJ.7sfA1O",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "client_id",
+							"value": "{{CLIENT_ID}}",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "client_secret",
+							"value": "{{CLIENT_SECRET}}",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8081/oauth/token",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"oauth",
+						"token"
 					]
 				}
 			},

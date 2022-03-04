@@ -2,6 +2,13 @@
 #  port: 8081
 
 spring:
+  security:
+    oauth2:
+      resourceserver:
+        opaquetoken:
+          introspection-uri: http://localhost:8081/oauth/check_token
+          client-id: ResourcerServerClientID
+          client-secret: ResourcerServerClientSecret
   datasource:
     username: root
     url: jdbc:mysql://${API_ENRIQUECIMENTO_MYSQL_HOST:localhost}/api_enriquecimento?createDatabaseIfNotExist=true&serverTimezone=UTC

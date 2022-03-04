@@ -6,12 +6,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class AuthorizationServerApplication {
-	@Value("${loggly.logging.token}")
-	private static String logglyLoggingToken;
+//	@Value("${loggly.logging.token}")
+//	private static String logglyLoggingToken;
 
 	public static void main(String[] args) {
 		SpringApplication.run(AuthorizationServerApplication.class, args);
-		System.out.println(logglyLoggingToken);
+		//System.out.println(logglyLoggingToken);
 	}
 
 }
