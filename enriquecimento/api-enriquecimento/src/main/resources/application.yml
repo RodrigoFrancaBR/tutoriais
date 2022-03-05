@@ -8,7 +8,7 @@ spring:
           client-secret: ResourcerServerClientSecret
   datasource:
     username: ${MYSQL_ROOT_PASSWORD:root}
-    url: ${API_ENRIQUECIMENTO_MYSQL_HOST:jdbc:mysql://localhost:3306}/${MYSQL_DATABASE:api_enriquecimento}?createDatabaseIfNotExist=true&serverTimezone=UTC
+    url: jdbc:mysql://${API_ENRIQUECIMENTO_MYSQL_HOST:localhost:3306}/${MYSQL_DATABASE:api_enriquecimento}?createDatabaseIfNotExist=true&serverTimezone=UTC
     password: ${MYSQL_PASSWORD:root}
   jpa:
     #generate-ddl: 'true'

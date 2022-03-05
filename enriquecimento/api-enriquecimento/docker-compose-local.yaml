@@ -10,17 +10,36 @@ services:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_PASSWORD: root
       MYSQL_DATABASE: "api_enriquecimento"
-#      MYSQL_ROOT_HOST: '%'
-#    volumes:
-#      - './data/enriquecimento/backup:/var/lib/mysql'
-#      - './data/enriquecimento:/docker-entrypoint-initdb.d'
+      MYSQL_ROOT_HOST: '%'
+    #    volumes:
+    #      - './data/enriquecimento/backup:/var/lib/mysql'
+    #      - './data/enriquecimento:/docker-entrypoint-initdb.d'
     ports:
       - '3306:3306'
     networks:
       - development-network
+
+  app:
+    image: api-enriquecimento
+    command: [ "/wait-for-it.sh", "db:3306", "-t", "60", "--", "java", "-jar", "app.jar" ]
+    build:
+      dockerfile: ./Dockerfile
+      context: .
+    platform: linux/arm64/v8
+    #container_name: app-api-enriquecimento
+    environment:
+      API_ENRIQUECIMENTO_MYSQL_HOST: db:3306
+    ports:
+      - '8080:8080'
+    networks:
+      - development-network
+    depends_on:
+      - db
   adminer:
     image: adminer
     container_name: adminer-api-enriquecimento
+    depends_on:
+      - app
     restart: on-failure
     ports:
       - '8085:8080'
