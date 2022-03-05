@@ -4,10 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -24,8 +22,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         auth.inMemoryAuthentication()
                 .withUser("resourceOwnerClient1")
-                    .password(bCryptPasswordEncoder.encode("123456"))
-                    .roles("admin");
+                .password(bCryptPasswordEncoder.encode("123456"))
+                .roles("admin");
 
 //                .and()
 //                .withUser("resourceOwnerClient2")
@@ -55,9 +53,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return super.authenticationManager();
     }
 
-//    @Bean
-//    @Override
-//    protected UserDetailsService userDetailsService() {
-//        return super.userDetailsService();
-//    }
+    @Bean
+    @Override
+    protected UserDetailsService userDetailsService() {
+        return super.userDetailsService();
+    }
 }

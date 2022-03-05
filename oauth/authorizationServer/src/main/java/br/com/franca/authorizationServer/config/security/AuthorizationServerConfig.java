@@ -1,9 +1,7 @@
 package br.com.franca.authorizationServer.config.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-//import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -12,20 +10,13 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.A
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
-import org.springframework.security.oauth2.provider.CompositeTokenGranter;
-import org.springframework.security.oauth2.provider.TokenGranter;
-import org.springframework.security.oauth2.provider.token.TokenStore;
-import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
-
-import java.util.Arrays;
-import java.util.List;
 
 @EnableAuthorizationServer
 @Configuration
 public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
 
-//    @Autowired
-//    UserDetailsService userDetailsService;
+    @Autowired
+    UserDetailsService userDetailsService;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -43,12 +34,12 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                 .withClient("WebApplicationClientId")
                     .secret(passwordEncoder.encode("WebApplicationClientSecret"))
                     // .authorizedGrantTypes("password", "refresh_token")
-                    .authorizedGrantTypes("password")
+                    .authorizedGrantTypes("password", "refresh_token")
 
                     ///.authorizedGrantTypes("password", "refresh_token")
                     .scopes("write", "read")
                     .accessTokenValiditySeconds(6 * 60 * 60)// 6 horas
-                    ///.refreshTokenValiditySeconds(60 * 24 * 60 * 60) // 60 dias
+                    .refreshTokenValiditySeconds(60 * 24 * 60 * 60) // 60 dias
 
 //                .and()
 //                .withClient("OtherWebApplicationClientId")
@@ -72,8 +63,8 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         endpoints
-                .authenticationManager(authenticationManager);
-//                .userDetailsService(userDetailsService)
+                .authenticationManager(authenticationManager)
+                .userDetailsService(userDetailsService);
 //                .reuseRefreshTokens(false)
 //                .tokenStore(redisTokenStore())
 //                .tokenGranter(tokenGranter(endpoints));
@@ -81,8 +72,8 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
-        // security.checkTokenAccess("isAuthenticated()");
-        security.checkTokenAccess("permitAll()");
+        security.checkTokenAccess("isAuthenticated()");
+        // security.checkTokenAccess("permitAll()");
                 // .allowFormAuthenticationForClients();
     }
 

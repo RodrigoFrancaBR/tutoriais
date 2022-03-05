@@ -211,11 +211,11 @@
 					]
 				},
 				"url": {
-					"raw": "localhost:8081/oauth/token",
+					"raw": "localhost:30006/oauth/token",
 					"host": [
 						"localhost"
 					],
-					"port": "8081",
+					"port": "30006",
 					"path": [
 						"oauth",
 						"token"
@@ -226,6 +226,50 @@
 		},
 		{
 			"name": "check_token",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "ResourcerServerClientSecret",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "ResourcerServerClientID",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "token",
+							"value": "86644462-7e71-4db8-baf6-d2747c664632",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:30006/oauth/check_token",
+					"host": [
+						"localhost"
+					],
+					"port": "30006",
+					"path": [
+						"oauth",
+						"check_token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "refresh_token",
 			"request": {
 				"auth": {
 					"type": "basic",
@@ -248,21 +292,26 @@
 					"mode": "urlencoded",
 					"urlencoded": [
 						{
-							"key": "token",
-							"value": "652aec95-3db6-4613-bda9-dfb4d65b3ff1",
+							"key": "refresh_token",
+							"value": "5012c517-c8ee-4f32-abaa-41ae6b3f9d0d",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "refresh_token",
 							"type": "text"
 						}
 					]
 				},
 				"url": {
-					"raw": "localhost:30006/oauth/check_token",
+					"raw": "localhost:30006/oauth/token",
 					"host": [
 						"localhost"
 					],
 					"port": "30006",
 					"path": [
 						"oauth",
-						"check_token"
+						"token"
 					]
 				}
 			},

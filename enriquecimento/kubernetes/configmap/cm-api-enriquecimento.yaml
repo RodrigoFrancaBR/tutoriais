@@ -3,6 +3,5 @@ kind: ConfigMap
 metadata:
   name: cm-api-enriquecimento
 data:
-  API_ENRIQUECIMENTO_MYSQL_HOST: svc-cip-db-api-enriquecimento:3306
-  AUTHORIZATION_SERVER_HOST: svc-np-authorization-server:8081
-  # trazer para k todos os dados do yaml da aplicação.
+  API_ENRIQUECIMENTO_MYSQL_HOST: jdbc:mysql://svc-cip-db-api-enriquecimento:3306
+  AUTHORIZATION_SERVER_HOST: http://svc-np-authorization-server:8081
