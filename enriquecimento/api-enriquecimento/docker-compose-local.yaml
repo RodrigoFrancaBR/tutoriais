@@ -1,4 +1,3 @@
-#version: '3'
 version: '3.9'
 
 services:
@@ -12,9 +11,9 @@ services:
       MYSQL_PASSWORD: root
       MYSQL_DATABASE: "api_enriquecimento"
 #      MYSQL_ROOT_HOST: '%'
-#    volumes:
+    volumes:
 #      - './data/enriquecimento/backup:/var/lib/mysql'
-#      - './data/enriquecimento:/docker-entrypoint-initdb.d'
+      - './data/enriquecimento:/docker-entrypoint-initdb.d'
     ports:
       - '3306:3306'
     networks:
@@ -24,7 +23,7 @@ services:
     container_name: adminer-api-enriquecimento
     restart: on-failure
     ports:
-      - '8082:8080'
+      - '8085:8080'
     networks:
       - development-network
 networks:

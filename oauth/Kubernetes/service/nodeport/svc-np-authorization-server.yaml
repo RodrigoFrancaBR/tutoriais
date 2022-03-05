@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-np-authorization-server
+spec:
+  type: NodePort
+  selector:
+    app: pod-authorization-server
+  ports:
+  - port: 8081
+    #targetPort: 8081
+    nodePort: 30006
+

@@ -4,6 +4,5 @@ metadata:
   name: cm-api-enriquecimento
 data:
   API_ENRIQUECIMENTO_MYSQL_HOST: svc-cip-db-api-enriquecimento:3306
-  # USER_DB: root
-  # PASS_DB: q1w2e3r4
-  # DATABASE_DB: empresa
+  AUTHORIZATION_SERVER_HOST: svc-np-authorization-server:8081
+  # trazer para k todos os dados do yaml da aplicação.

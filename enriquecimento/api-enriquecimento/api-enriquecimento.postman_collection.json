@@ -12,6 +12,16 @@
 					"type": "oauth2",
 					"oauth2": [
 						{
+							"key": "tokenType",
+							"value": "",
+							"type": "string"
+						},
+						{
+							"key": "accessToken",
+							"value": "",
+							"type": "string"
+						},
+						{
 							"key": "clientSecret",
 							"value": "secret",
 							"type": "string"
@@ -66,12 +76,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/enriquecimento/pessoas/id?id=1",
+					"raw": "http://localhost:30003/api/enriquecimento/pessoas/id?id=1",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "8080",
+					"port": "30003",
 					"path": [
 						"api",
 						"enriquecimento",
@@ -209,6 +219,50 @@
 					"path": [
 						"oauth",
 						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "check_token",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{CLIENT_SECRET}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{CLIENT_ID}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "token",
+							"value": "652aec95-3db6-4613-bda9-dfb4d65b3ff1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:30006/oauth/check_token",
+					"host": [
+						"localhost"
+					],
+					"port": "30006",
+					"path": [
+						"oauth",
+						"check_token"
 					]
 				}
 			},

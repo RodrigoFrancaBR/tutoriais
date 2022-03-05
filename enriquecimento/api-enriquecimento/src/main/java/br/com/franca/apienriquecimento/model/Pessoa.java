@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
 
-@Table(name = "TB_PESSOA")
+@Table(name = "tb_pessoa")
 @Entity
 @Data
 @AllArgsConstructor

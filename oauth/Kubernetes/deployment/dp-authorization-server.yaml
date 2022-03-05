@@ -1,0 +1,30 @@
+# Definir a versão da API
+apiVersion: apps/v1
+# Definir o tipo do arquivo de definição
+kind: Deployment
+# Quais são os metadados desse deployment?
+metadata:
+  name: dp-authorization-server
+# Quais são as especificações desse deployment?
+spec:
+# Selecione o template
+  selector:
+    matchLabels:
+      app: pod-authorization-server
+  # Definir um template
+  template:
+    metadata:
+      name: pod-authorization-server
+      #Definir uma etiqueta para o pod ser encontrado por algum serviço
+      labels:
+        app: pod-authorization-server
+    spec:
+      containers:
+        # container-name
+        - name: ct-authorization-server
+          imagePullPolicy: Never
+          image: authorization-server
+          ports:
+          - containerPort: 8081
+  replicas: 2
+      
