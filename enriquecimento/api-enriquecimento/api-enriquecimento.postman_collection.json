@@ -225,6 +225,92 @@
 			"response": []
 		},
 		{
+			"name": "obterToken_client_credentials",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "BatchApplicationClientSecret",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "BatchApplicationClientId",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "text"
+						},
+						{
+							"key": "code",
+							"value": "dn20VR",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "redirect_uri",
+							"value": "{{REDIRECT_URI}}",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "code_verifier",
+							"value": "QzUUDT1y0k6O6-oz9Krsj9ZB-nlz0a1fiXg9ye3Uq_MH4WwJvbYTDLX~CO4QOydnBepEGE7hrR-l2lxkv.7ZvHnYVelz7JPuRQnM_n7mP8rHqZJEcE.tz38KJ.7sfA1O",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "client_id",
+							"value": "{{CLIENT_ID}}",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "client_secret",
+							"value": "{{CLIENT_SECRET}}",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:30006/oauth/token",
+					"host": [
+						"localhost"
+					],
+					"port": "30006",
+					"path": [
+						"oauth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "check_token",
 			"request": {
 				"auth": {
@@ -249,7 +335,7 @@
 					"urlencoded": [
 						{
 							"key": "token",
-							"value": "86644462-7e71-4db8-baf6-d2747c664632",
+							"value": "a3c73925-08fe-43c9-af2f-f2163e8b4042",
 							"type": "text"
 						}
 					]

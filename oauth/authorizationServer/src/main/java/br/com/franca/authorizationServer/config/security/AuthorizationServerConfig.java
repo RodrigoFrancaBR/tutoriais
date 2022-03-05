@@ -32,14 +32,11 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
         clients.inMemory()
                 .withClient("WebApplicationClientId")
-                    .secret(passwordEncoder.encode("WebApplicationClientSecret"))
-                    // .authorizedGrantTypes("password", "refresh_token")
-                    .authorizedGrantTypes("password", "refresh_token")
-
-                    ///.authorizedGrantTypes("password", "refresh_token")
-                    .scopes("write", "read")
-                    .accessTokenValiditySeconds(6 * 60 * 60)// 6 horas
-                    .refreshTokenValiditySeconds(60 * 24 * 60 * 60) // 60 dias
+                .secret(passwordEncoder.encode("WebApplicationClientSecret"))
+                .authorizedGrantTypes("password", "refresh_token")
+                .scopes("write", "read")
+                .accessTokenValiditySeconds(6 * 60 * 60)// 6 horas
+                .refreshTokenValiditySeconds(60 * 24 * 60 * 60) // 60 dias
 
 //                .and()
 //                .withClient("OtherWebApplicationClientId")
@@ -49,15 +46,15 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 //                .scopes("write", "read")
 //                .redirectUris("http://localhost:8080")
 //
-//            .and()
-//                    .withClient("BatchApplicationClientId")
-//                        .secret(passwordEncoder.encode("BatchApplicationClientSecret"))
-//                        .authorizedGrantTypes("client_credentials")
-//                        .scopes("write", "read")
-//
-            .and()
-                    .withClient("ResourcerServerClientID")
-                    .secret(passwordEncoder.encode("ResourcerServerClientSecret"));
+                .and()
+                .withClient("BatchApplicationClientId")
+                .secret(passwordEncoder.encode("BatchApplicationClientSecret"))
+                .authorizedGrantTypes("client_credentials")
+                .scopes("write", "read")
+
+                .and()
+                .withClient("ResourcerServerClientID")
+                .secret(passwordEncoder.encode("ResourcerServerClientSecret"));
     }
 
     @Override
@@ -74,7 +71,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
         security.checkTokenAccess("isAuthenticated()");
         // security.checkTokenAccess("permitAll()");
-                // .allowFormAuthenticationForClients();
+        // .allowFormAuthenticationForClients();
     }
 
 //    private TokenGranter tokenGranter(AuthorizationServerEndpointsConfigurer endpoints) {
