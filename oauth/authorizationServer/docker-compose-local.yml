@@ -1,16 +1,11 @@
-#version: '3'
-#
-#services:
-#    redis:
-#      image: redis
-#      container_name: rfranca-dev-authorization-server-redis
-#      ports:
-#        - "6379:6379"
-
-#version: '3'
 version: '3.9'
 
 services:
+  redis:
+    image: redis
+    container_name: redis-authorization-server
+    ports:
+      - "6379:6379"
   app:
     build:
       dockerfile: ./Dockerfile

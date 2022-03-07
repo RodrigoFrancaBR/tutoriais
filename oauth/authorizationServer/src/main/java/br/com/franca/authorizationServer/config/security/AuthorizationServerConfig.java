@@ -10,6 +10,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.A
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
+import org.springframework.security.oauth2.provider.token.TokenStore;
 
 @EnableAuthorizationServer
 @Configuration
@@ -23,9 +24,9 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
     @Autowired
     private AuthenticationManager authenticationManager;
-//
-//    @Autowired
-//    private RedisConnectionFactory redisConnectionFactory;
+
+    @Autowired
+    private TokenStore redisTokenStore;
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
@@ -61,9 +62,9 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         endpoints
                 .authenticationManager(authenticationManager)
-                .userDetailsService(userDetailsService);
+                .userDetailsService(userDetailsService)
 //                .reuseRefreshTokens(false)
-//                .tokenStore(redisTokenStore())
+                .tokenStore(redisTokenStore);
 //                .tokenGranter(tokenGranter(endpoints));
     }
 
@@ -85,9 +86,6 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 //        return new CompositeTokenGranter(granters);
 //    }
 //
-//    @Bean
-//    public TokenStore redisTokenStore(){
-//        return new RedisTokenStore(redisConnectionFactory);
-//    }
+
 
 }
