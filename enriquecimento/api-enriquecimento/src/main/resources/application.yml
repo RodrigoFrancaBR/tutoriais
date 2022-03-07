@@ -3,13 +3,13 @@ spring:
     oauth2:
       resourceserver:
         opaquetoken:
-          introspection-uri: ${AUTHORIZATION_SERVER_HOST:http://localhost:8081}/oauth/check_token
+          introspection-uri: http://${AUTHORIZATION_SERVER_HOST:localhost}:${AUTHORIZATION_SERVER_PORT:8081}/oauth/check_token
           client-id: ResourcerServerClientID
           client-secret: ResourcerServerClientSecret
   datasource:
-    username: ${MYSQL_ROOT_PASSWORD:root}
-    url: jdbc:mysql://${API_ENRIQUECIMENTO_MYSQL_HOST:localhost:3306}/${MYSQL_DATABASE:api_enriquecimento}?createDatabaseIfNotExist=true&serverTimezone=UTC
-    password: ${MYSQL_PASSWORD:root}
+    username: ${API_ENRIQUECIMENTO_MYSQL_USER:root}
+    url: jdbc:mysql://${API_ENRIQUECIMENTO_MYSQL_HOST:localhost}:${API_ENRIQUECIMENTO_MYSQL_PORT:3306}/${API_ENRIQUECIMENTO_MYSQL_DATABASE:api_enriquecimento}?createDatabaseIfNotExist=true&serverTimezone=UTC
+    password: ${API_ENRIQUECIMENTO_MYSQL_PASSWORD:root}
   jpa:
     #generate-ddl: 'true'
     properties:
@@ -17,5 +17,7 @@ spring:
         dialect: org.hibernate.dialect.MySQL57Dialect
         format_sql: 'true'
     hibernate:
-      ddl-auto: create
+#      ddl-auto: create
     show-sql: 'true'
+
+

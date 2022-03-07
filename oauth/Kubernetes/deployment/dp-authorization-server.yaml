@@ -26,5 +26,5 @@ spec:
           image: authorization-server
           ports:
           - containerPort: 8081
-  replicas: 2
+  replicas: 1
       

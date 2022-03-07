@@ -29,5 +29,5 @@ spec:
           envFrom:           
             - configMapRef:
                 name: cm-api-enriquecimento
-  replicas: 2
+  replicas: 1
       

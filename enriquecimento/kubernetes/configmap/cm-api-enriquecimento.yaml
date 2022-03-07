@@ -3,5 +3,11 @@ kind: ConfigMap
 metadata:
   name: cm-api-enriquecimento
 data:
-  API_ENRIQUECIMENTO_MYSQL_HOST: svc-cip-db-api-enriquecimento:3306
-  AUTHORIZATION_SERVER_HOST: http://svc-np-authorization-server:8081
+  AUTHORIZATION_SERVER_HOST: svc-np-authorization-server
+  AUTHORIZATION_SERVER_PORT: '8081'
+  API_ENRIQUECIMENTO_MYSQL_USER: root
+  API_ENRIQUECIMENTO_MYSQL_HOST: svc-cip-db-api-enriquecimento
+  API_ENRIQUECIMENTO_MYSQL_PORT: '3306'
+  API_ENRIQUECIMENTO_MYSQL_DATABASE: api_enriquecimento
+  API_ENRIQUECIMENTO_MYSQL_PASSWORD: root
+  
