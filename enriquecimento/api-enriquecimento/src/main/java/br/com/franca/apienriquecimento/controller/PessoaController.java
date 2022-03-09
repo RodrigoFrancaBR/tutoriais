@@ -16,16 +16,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RequiredArgsConstructor
 @Slf4j
-@RestController
+@RequiredArgsConstructor
 @RequestMapping("api/enriquecimento/pessoas")
+@RestController
 public class PessoaController {
 
     private final PessoaService service;
 
     @GetMapping(path = "/cpf/{cpf}", produces = MediaType.TEXT_XML_VALUE)
-    public Pessoa findById(@PathVariable String cpf) {
+    public Pessoa findByCpf(@PathVariable String cpf) {
         log.info("inicio id: {}");
         return service.findByCpf(cpf);
     }

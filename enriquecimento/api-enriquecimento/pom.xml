@@ -12,9 +12,9 @@
     </parent>
 
     <groupId>br.com.franca</groupId>
-    <artifactId>apiEnriquecimentoRestaurante</artifactId>
+    <artifactId>api-enriquecimento</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>apiEnriquecimentoRestaurante</name>
+    <name>api-enriquecimento</name>
     <description>API para enriquecimento de dados de uma Pessoa</description>
 
     <properties>
@@ -85,15 +85,19 @@
     <!--sempre que fizer um build com maven, é executado esse plugin-->
     <build>
         <plugins>
+
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+
             <plugin>
                 <artifactId>maven-failsafe-plugin</artifactId>
             </plugin>
+
         </plugins>
     </build>
+
 
     <profiles>
         <profile>
