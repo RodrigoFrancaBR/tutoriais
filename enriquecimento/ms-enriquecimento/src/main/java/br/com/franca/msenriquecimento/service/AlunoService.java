@@ -23,15 +23,16 @@ public class AlunoService {
     private final ApiEnriquecimentoService apiEnriquecimentoService;
 
     public Aluno findByCpf(String cpf) {
-        log.info("inicio cpf: {}");
+        log.info("inicio cpf: {}", cpf);
         return repository.findByCpf(cpf)
-                .orElseGet(()->enriquecerAluno(cpf));
+                .orElseGet(() -> enriquecerAluno(cpf));
     }
 
     private Aluno enriquecerAluno(String cpf) {
-        log.info("inicio cpf: {}");
-        PessoaResponse pessoa = apiEnriquecimentoService.findByCpf(cpf);
-        return null;
+        log.info("inicio cpf: {}", cpf);
+        var pessoaResponse = apiEnriquecimentoService.enriquecerAluno(cpf);
+        var aluno = mapper.map(pessoaResponse, Aluno.class);
+        return repository.save(aluno);
     }
 
 //    // @Cacheable("enriquecimentoToken")

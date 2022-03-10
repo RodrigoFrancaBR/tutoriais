@@ -19,8 +19,8 @@ public class AlunoController {
     private final AlunoService service;
 
     @GetMapping(path = "/cpf/{cpf}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Aluno findById(@PathVariable String cpf) {
-        log.info("inicio id: {}");
+    public Aluno findByCpf(@PathVariable String cpf) {
+        log.info("inicio cpf: {}", cpf);
         return service.findByCpf(cpf);
     }
 }

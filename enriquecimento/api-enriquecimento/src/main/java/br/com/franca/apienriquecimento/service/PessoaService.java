@@ -12,6 +12,8 @@ import net.bytebuddy.matcher.ModifierMatcher;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.function.Function;
+
 @RequiredArgsConstructor
 @Slf4j
 @Service
@@ -19,9 +21,10 @@ public class PessoaService {
     private final ModelMapper mapper;
     private final PessoaRepository repository;
 
-    public Pessoa findByCpf(String cpf) {
-        log.info("inicio cpf: {}");
+    public PessoaDTO findByCpf(String cpf) {
+        log.info("inicio cpf: {}", cpf);
         return repository.findByCpf(cpf)
+                .map(pessoa->mapper.map(pessoa, PessoaDTO.class))
                 .orElseThrow(() -> new PessoaNaoEncontradaException(Erro.PESSOA_NAO_ENCONTRADA.getValor()));
     }
 

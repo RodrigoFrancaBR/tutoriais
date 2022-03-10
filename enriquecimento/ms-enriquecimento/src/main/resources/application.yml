@@ -3,7 +3,22 @@ server:
 spring:
 #  security:
 #    oauth2:
-#      resourceserver:
+#      client:
+#        registration:
+#          authorization-server:
+#            #provider: yourprovider
+#            client-id: BatchApplicationClientId
+#            client-secret: BatchApplicationClientSecret
+#            scope:
+#              - write
+#              - read
+#            authorization-grant-type: client_credentials
+#            client-authentication-method: post
+#        provider:
+#          authorization-server: http://localhost:8081/oauth/token
+
+
+  #      resourceserver:
 #        opaquetoken:
 #          introspection-uri: http://${AUTHORIZATION_SERVER_HOST:localhost}:${AUTHORIZATION_SERVER_PORT:8081}/oauth/check_token
 #          client-id: ResourcerServerClientID
