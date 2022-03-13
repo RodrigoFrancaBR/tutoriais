@@ -30,6 +30,7 @@ services:
     platform: linux/arm64/v8
     environment:
       API_ENRIQUECIMENTO_MYSQL_HOST: mysql-api-enriquecimento
+      AUTHORIZATION_SERVER_HOST: authorization-server
 # remvoer ports para poder executar compose up --scalle app-java=2
 #    ports:
 #      - '8080:8080'
@@ -47,6 +48,7 @@ services:
       - dev_network
     depends_on:
       - api-enriquecimento
+
   adminer:
     image: adminer
     container_name: adminer-api-enriquecimento
@@ -55,6 +57,26 @@ services:
     restart: on-failure
     ports:
       - '8085:8080'
+    networks:
+      - dev_network
+
+  redis:
+    image: redis
+    container_name: redis-authorization-server
+    ports:
+      - "6379:6379"
+    networks:
+      - dev_network
+
+  authorization-server:
+    image: authorization-server
+    build: authorization-server
+    platform: linux/arm64/v8
+    #container_name: authorization-server
+    environment:
+      AUTHORIZATION_SERVER: redis
+    ports:
+      - '8081:8081'
     networks:
       - dev_network
 
