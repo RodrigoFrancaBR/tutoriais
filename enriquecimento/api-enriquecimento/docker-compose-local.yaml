@@ -1,7 +1,7 @@
 version: '3.9'
 
 services:
-  db:
+  mysql:
     platform: linux/x86_64
     image: mysql
     container_name: mysql-api-enriquecimento
@@ -13,39 +13,51 @@ services:
       MYSQL_ROOT_HOST: '%'
     #    volumes:
     #      - './data/enriquecimento/backup:/var/lib/mysql'
+    # forma alternativa ao import.sql para inseriri dados na tabela
     #      - './data/enriquecimento:/docker-entrypoint-initdb.d'
     ports:
       - '3306:3306'
     networks:
-      - development-network
+      - dev_network
 
-  app:
+  api-enriquecimento:
     image: api-enriquecimento
-    command: [ "/wait-for-it.sh", "db:3306", "-t", "60", "--", "java", "-jar", "app.jar" ]
-    build:
-      dockerfile: ./Dockerfile
-      context: .
+# quando subi com scalle deu erro deixar o container name e o nome do serviço. Mesmo com nomes diferentes ainda sim deu erro
+#    container_name: api-enriquecimento
+    #pode usar o nome do serviço ou o nome do container do mysql no command
+    command: [ "/wait-for-it.sh", "mysql-api-enriquecimento:3306", "-t", "60", "--", "java", "-jar", "app.jar" ]
+    build: api-enriquecimento
     platform: linux/arm64/v8
-    #container_name: app-api-enriquecimento
     environment:
-      API_ENRIQUECIMENTO_MYSQL_HOST: db:3306
-    ports:
-      - '8080:8080'
+      API_ENRIQUECIMENTO_MYSQL_HOST: mysql-api-enriquecimento
+# remvoer ports para poder executar compose up --scalle app-java=2
+#    ports:
+#      - '8080:8080'
     networks:
-      - development-network
+      - dev_network
     depends_on:
-      - db
+      - mysql
 
+  api-enriquecimento-prox:
+    build: ./nginx
+    image: api-enriquecimento-prox
+    ports:
+      - '80:80'
+    networks:
+      - dev_network
+    depends_on:
+      - api-enriquecimento
   adminer:
     image: adminer
     container_name: adminer-api-enriquecimento
     depends_on:
-      - app
+      - mysql
     restart: on-failure
     ports:
       - '8085:8080'
     networks:
-      - development-network
+      - dev_network
+
 networks:
-  development-network:
+  dev_network:
     driver: bridge

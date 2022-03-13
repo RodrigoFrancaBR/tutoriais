@@ -53,6 +53,12 @@
             <scope>compile</scope>
         </dependency>
 
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
         <!--dependencia para retornar XML-->
         <dependency>
             <groupId>com.fasterxml.jackson.dataformat</groupId>
@@ -121,6 +127,8 @@
                         <configuration>
                             <repository>api-enriquecimento</repository>
                             <buildArgs>
+                                <!--argumentos em tempo de compilação para dentro da imagem -->
+                                <!--copia o nome do arquivo jar que está na pasta target e coloca ai -->
                                 <JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
                             </buildArgs>
                         </configuration>
