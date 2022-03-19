@@ -32,6 +32,9 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
 
         clients.inMemory()
+                /**
+                 * Para clientes (Password Credentials, Password Flows, Password Grant, Password Grant Type)
+                 */
                 .withClient("WebApplicationClientId")
                 .secret(passwordEncoder.encode("WebApplicationClientSecret"))
                 .authorizedGrantTypes("password", "refresh_token")
@@ -47,12 +50,18 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 //                .scopes("write", "read")
 //                .redirectUris("http://localhost:8080")
 //
+                /**
+                 * Para os clientes Credentials Grant
+                 */
                 .and()
                 .withClient("BatchApplicationClientId")
                 .secret(passwordEncoder.encode("BatchApplicationClientSecret"))
                 .authorizedGrantTypes("client_credentials")
                 .scopes("write", "read")
 
+                /**
+                 * Para aplicação cliente ResourceServer
+                 */
                 .and()
                 .withClient("ResourcerServerClientID")
                 .secret(passwordEncoder.encode("ResourcerServerClientSecret"));

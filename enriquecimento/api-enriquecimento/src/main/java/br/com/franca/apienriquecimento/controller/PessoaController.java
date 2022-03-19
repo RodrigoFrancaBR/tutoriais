@@ -1,5 +1,6 @@
 package br.com.franca.apienriquecimento.controller;
 
+import br.com.franca.apienriquecimento.anotations.Auditavel;
 import br.com.franca.apienriquecimento.controller.dto.PessoaDTO;
 import br.com.franca.apienriquecimento.model.Pessoa;
 import br.com.franca.apienriquecimento.service.PessoaService;
@@ -26,16 +27,14 @@ import java.util.Optional;
 public class PessoaController {
 
     private final PessoaService service;
-
+    @Auditavel(nomeDaTabela = "tb_pessoas_findByCpf")
     @GetMapping(path = "/cpf/{cpf}", produces = MediaType.TEXT_XML_VALUE)
     public PessoaDTO findByCpf(@PathVariable String cpf) throws JsonProcessingException {
         log.info("inicio cpf: {}", cpf);
         return service.findByCpf(cpf);
-//        ObjectMapper xmlMapper = new XmlMapper();
-//        String s = xmlMapper.writeValueAsString(pessoaDTO);
-        // return s;
     }
 
+    @Auditavel(nomeDaTabela = "tb_pessoas_save")
     @PostMapping(produces = MediaType.TEXT_XML_VALUE)
     public ResponseEntity<PessoaDTO> save(@RequestBody PessoaDTO pessoaDTO) {
         log.info("inicio pessoaDTO: {}");

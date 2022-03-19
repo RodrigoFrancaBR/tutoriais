@@ -7,7 +7,8 @@ import lombok.Getter;
 @Getter
 public enum Erro {
     PESSOA_NAO_ENCONTRADA("E001", "Erro!! pessoa não encontrada"),
-    TOKEN_INVALIDO("E002", "Erro!! token inválido");
+    TOKEN_INVALIDO("E002", "Erro!! token inválido"),
+    CONVERSAO_FALHOU("E003", "Não foi possível converter");
 
     private String chave;
     private String valor;

@@ -14,8 +14,8 @@
     <groupId>br.com.franca</groupId>
     <artifactId>ms-enriquecimento-restaurante</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>ms-enriquecimento-restaurante</name>
-    <description>Microsserviço para enriquecer um objeto por id</description>
+    <name>ms-enriquecimento</name>
+    <description>Microsserviço para enriquecer um objeto por cpf</description>
 
     <properties>
         <java.version>11</java.version>
