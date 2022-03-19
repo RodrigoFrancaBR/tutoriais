@@ -9,6 +9,8 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.reflect.CodeSignature;
 import org.aspectj.lang.reflect.MethodSignature;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Field;
@@ -21,6 +23,9 @@ import java.util.stream.Collectors;
 @Aspect
 @Component
 public class AuditavelAspect {
+
+    @Autowired
+    MongoTemplate mongoTemplate;
 
     @Around("@annotation(br.com.franca.apienriquecimento.anotations.Auditavel)")
     public Object logRequest(ProceedingJoinPoint joinPoint) throws Throwable {
@@ -43,6 +48,7 @@ public class AuditavelAspect {
         System.out.println(requestMap);
         String nomeDaTabela = getNomeDaTabela(joinPoint);
         requestMap.put(NOME_DA_TABELA, nomeDaTabela);
+        mongoTemplate.save(requestMap, nomeDaTabela);
         var result = joinPoint.proceed();
 
         return result;

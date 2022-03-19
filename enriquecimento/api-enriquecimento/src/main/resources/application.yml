@@ -45,6 +45,10 @@ spring:
       path: /h2
 #*******************H2*********************************#
 
+  data:
+      mongodb:
+          uri: mongodb://${API_ENRIQUECIMENTO_MONGODB_HOST:localhost}:${API_ENRIQUECIMENTO_MONGODB_PORT:27017}/${API_ENRIQUECIMENTO_MONGODB_DATABASE:Auditavel}
+
   security:
     oauth2:
       resourceserver:
