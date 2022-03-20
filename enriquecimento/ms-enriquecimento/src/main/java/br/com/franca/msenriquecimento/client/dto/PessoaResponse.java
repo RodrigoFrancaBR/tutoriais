@@ -15,6 +15,7 @@ import java.time.LocalDate;
 @EqualsAndHashCode
 @Data
 public class PessoaResponse {
+    private Long id;
     private String nome;
     private String cpf;
     private String rg;

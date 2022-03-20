@@ -1,6 +1,10 @@
 package br.com.franca.msenriquecimento.config;
 
 //import br.com.franca.msenriquecimento.domain.UsuarioAutenticado;
+
+import br.com.franca.msenriquecimento.client.apienriquecimento.ApiEnriquecimentoService;
+import br.com.franca.msenriquecimento.domain.AuthorizationClient;
+import br.com.franca.msenriquecimento.service.AuthorizationServerService;
 import feign.Client;
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
@@ -8,6 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Lazy;
 
 import java.util.Collections;
 import java.util.Map;
@@ -18,24 +23,27 @@ import java.util.stream.Stream;
 @Configuration
 public class FeignConfig implements RequestInterceptor {
 
-    private static final String PATH_URL = "token";
+    private static final String AUTH = "Authorization";
 
-//    @Autowired
-//    private EnriquecimentoService service;
+    @Autowired
+    @Lazy
+    private ApiEnriquecimentoService apiEnriquecimentoService;
+
+    @Autowired
+    @Lazy
+    private AuthorizationServerService authorizationServiceService;
 
     @Override
     public void apply(RequestTemplate requestTemplate) {
-        log.info("inicio apply():::::::");
-        requestTemplate.header("Authorization", "Bearer 4eac1b09-f9cf-4d2c-94b3-74e56b2da3e6");
+        log.info("FeignConfig inicio apply():::::::");
+
+        Optional.ofNullable(authorizationServiceService)
+                .filter(e -> !requestTemplate.headers().containsKey(AUTH))
+                .map(AuthorizationServerService::login)
+                .map(AuthorizationClient::getToken)
+                .ifPresent(token -> requestTemplate.header(AUTH, token));
         log.info(requestTemplate.url());
-
-//        Optional.ofNullable(service)
-//                .filter(auth -> !requestTemplate.url().contains(PATH_URL))
-//                .map(EnriquecimentoService::efetuarLogin)
-//                .map(UsuarioAutenticado::getToken)
-//                .ifPresent(token -> requestTemplate.queries(Map.of(PATH_URL, Collections.singleton(token))));
-
-        log.info("fim apply():::::::");
+        log.info("FeignConfig fim apply():::::::");
     }
 
 //    @Bean

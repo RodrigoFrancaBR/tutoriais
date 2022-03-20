@@ -32,7 +32,9 @@ public class AlunoService {
         log.info("inicio cpf: {}", cpf);
         var pessoaResponse = apiEnriquecimentoService.enriquecerAluno(cpf);
         var aluno = mapper.map(pessoaResponse, Aluno.class);
-        return repository.save(aluno);
+        Aluno save = repository.save(aluno);
+        return save;
+
     }
 
 //    // @Cacheable("enriquecimentoToken")
