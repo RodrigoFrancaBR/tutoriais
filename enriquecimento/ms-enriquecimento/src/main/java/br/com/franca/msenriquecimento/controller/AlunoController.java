@@ -1,6 +1,6 @@
 package br.com.franca.msenriquecimento.controller;
 
-import br.com.franca.msenriquecimento.model.Aluno;
+import br.com.franca.msenriquecimento.domain.model.Aluno;
 import br.com.franca.msenriquecimento.service.AlunoService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -20,7 +20,7 @@ public class AlunoController {
 
     @GetMapping(path = "/cpf/{cpf}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Aluno findByCpf(@PathVariable String cpf) {
-        log.info("inicio cpf: {}", cpf);
+        log.info("inicio controller cpf: {}", cpf);
         return service.findByCpf(cpf);
     }
 }

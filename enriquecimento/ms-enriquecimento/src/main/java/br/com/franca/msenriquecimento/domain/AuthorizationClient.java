@@ -1,5 +1,6 @@
 package br.com.franca.msenriquecimento.domain;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,9 +9,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 public class AuthorizationClient {
-    private String access_token;
-    private String token_type;
-    private String expires_in;
+    @JsonProperty(value = "access_token")
+    private String accessToken;
+    @JsonProperty(value = "token_type")
+    private String tokenType;
+    @JsonProperty(value = "expires_in")
+    private String expiresIn;
     private String scope;
-    private String token;
 }
