@@ -282,25 +282,21 @@ build/
 
 ### VS Code ###
 .vscode/
-./Users/rodrigocosta/Documents/GitHub/tutoriais/myAppMongoDB/data/**
-.DS_Store
 *.wt
-*.2021-12-22
-*.2021-12-22T23-43-03Z-00000
-*.2021-12-23T00-19-41Z-00000
 *.interim
-*.2021-12-22T23-42-56Z-00000
-*.2021-12-23T00-21-54Z-00000
-*.2021-12-23T00-24-09Z-00000
 *.turtle
-*.2021-12-23T00-38-34Z-00000
-.DS_Store
-*.0000000006
 *.bson
 *.lock
-*.0000000002
-*.0000000001
-myAppMongoDB/data/WiredTiger
+
+### NODE ###
+node_modules
 /foodanalytics/node_modules/
 *.DS_Store
-node_modules
+
+### MONGO ###
+myAppMongoDB/data/WiredTiger
+enriquecimento/api-enriquecimento/data/**
+myAppMongoDB/data/**
+### KAFKA ###
+kafka/2022-01-22 09:57:15.847 INFO 1677 --- [ .ini
+kafka/2022-01-22 09:57:15.847 INFO 1677 --- \[ .ini
