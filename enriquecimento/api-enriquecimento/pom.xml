@@ -132,7 +132,6 @@
     <profiles>
         <profile>
             <id>docker</id>
-
             <build>
                 <plugins>
                     <plugin>
@@ -149,7 +148,7 @@
                             </execution>
                         </executions>
                         <configuration>
-                            <repository>api-enriquecimento</repository>
+                            <repository>i_api-enriquecimento</repository>
                             <buildArgs>
                                 <!--argumentos em tempo de compilação para dentro da imagem -->
                                 <!--copia o nome do arquivo jar que está na pasta target e coloca ai -->

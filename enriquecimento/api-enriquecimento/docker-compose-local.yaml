@@ -11,36 +11,27 @@ services:
       MYSQL_PASSWORD: root
       MYSQL_DATABASE: "api_enriquecimento"
       MYSQL_ROOT_HOST: '%'
-    #    volumes:
-    #      - './data/enriquecimento/backup:/var/lib/mysql'
-    # forma alternativa ao import.sql para inseriri dados na tabela
-    #      - './data/enriquecimento:/docker-entrypoint-initdb.d'
     ports:
       - '3306:3306'
     networks:
       - dev_network
-
-  api-enriquecimento:
-    image: api-enriquecimento
-    # quando subi com scalle deu erro deixar o container name e o nome do serviço. Mesmo com nomes diferentes ainda sim deu erro
-    #    container_name: api-enriquecimento
-    #pode usar o nome do serviço ou o nome do container do mysql no command
-    command: [ "/wait-for-it.sh", "mysql-api-enriquecimento:3306", "-t", "60", "--", "java", "-jar", "app.jar" ]
-    build: api-enriquecimento
-    platform: linux/arm64/v8
-    environment:
-      API_ENRIQUECIMENTO_MYSQL_HOST: mysql-api-enriquecimento
-      AUTHORIZATION_SERVER_HOST: authorization-server
-    # remover ports para poder executar compose up --scalle app-java=2
-    #    ports:
-    #      - '8080:8080'
-    networks:
-      - dev_network
-    depends_on:
-      - mysql
-
+#
+#  api-enriquecimento:
+#    image: i_api-enriquecimento
+#    command: [ "/wait-for-it.sh", "mysql-api-enriquecimento:3306", "-t", "60", "--", "java", "-jar", "app.jar" ]
+#    platform: linux/arm64/v8
+#    environment:
+#      API_ENRIQUECIMENTO_MYSQL_HOST: mysql-api-enriquecimento
+#      AUTHORIZATION_SERVER_HOST: authorization-server
+#    networks:
+#      - dev_network
+#    depends_on:
+#      - mysql
+#
   api-enriquecimento-prox:
-    build: ./nginx
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
     image: api-enriquecimento-prox
     ports:
       - '80:80'
@@ -100,17 +91,17 @@ services:
     networks:
       - dev_network
 
-  authorization-server:
-    image: authorization-server
-    build: authorization-server
-    platform: linux/arm64/v8
-    #container_name: authorization-server
-    environment:
-      AUTHORIZATION_SERVER: redis
-    ports:
-      - '8081:8081'
-    networks:
-      - dev_network
+#  authorization-server:
+#    image: authorization-server
+#    build: authorization-server
+#    platform: linux/arm64/v8
+#    #container_name: authorization-server
+#    environment:
+#      AUTHORIZATION_SERVER: redis
+#    ports:
+#      - '8081:8081'
+#    networks:
+#      - dev_network
 
 networks:
   dev_network:

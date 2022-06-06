@@ -40,7 +40,14 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
             .authorizedGrantTypes("password")
             .scopes("write", "read")
             .accessTokenValiditySeconds(6 * 60 * 60)// 6 horas
-            .refreshTokenValiditySeconds(60 * 24 * 60 * 60); // 60 dias
+            .refreshTokenValiditySeconds(60 * 24 * 60 * 60) // 60 dias
+
+            /**
+             * Para aplicação cliente ResourceServer
+             */
+            .and()
+            .withClient("ResourcerServerClientID")
+            .secret(passwordEncoder.encode("ResourcerServerClientSecret"));
     }
 
     @Override
@@ -53,12 +60,12 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 //                .tokenGranter(tokenGranter(endpoints));
     }
 
-//    @Override
-//    public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
-//        security.checkTokenAccess("isAuthenticated()");
-//        // security.checkTokenAccess("permitAll()");
-//        // .allowFormAuthenticationForClients();
-//    }
+    @Override
+    public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
+        security.checkTokenAccess("isAuthenticated()");
+        // security.checkTokenAccess("permitAll()");
+        // .allowFormAuthenticationForClients();
+    }
 
 //    private TokenGranter tokenGranter(AuthorizationServerEndpointsConfigurer endpoints) {
 //        PkceAuthorizationCodeTokenGranter pkceAuthorizationCodeTokenGranter = new PkceAuthorizationCodeTokenGranter(endpoints.getTokenServices(),

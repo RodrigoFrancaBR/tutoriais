@@ -13,7 +13,7 @@ COPY target/${JAR_FILE} /app/app.jar
 
 COPY wait-for-it.sh /wait-for-it.sh
 
-# tornar o arquivo wait-for-it.sh como executavel
+#tornar o arquivo wait-for-it.sh disponível como um executável, mas não executamos ele dentro do CMD
 RUN chmod +x /wait-for-it.sh
 
 EXPOSE 8080

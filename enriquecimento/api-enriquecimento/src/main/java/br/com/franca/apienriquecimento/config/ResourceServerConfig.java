@@ -11,21 +11,21 @@ public class ResourceServerConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .authorizeRequests()
-                .antMatchers("/h2/**").permitAll()
-                .antMatchers("/host/**").permitAll()
-                .anyRequest().authenticated()
-                .and()
-                .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and()
-                .oauth2ResourceServer().opaqueToken();
+            .authorizeRequests()
+            .antMatchers("/h2/**").permitAll()
+            .antMatchers("/host/**").permitAll()
+            .anyRequest().authenticated()
+            .and()
+            .sessionManagement()
+            .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+            .and()
+            .oauth2ResourceServer().opaqueToken();
     }
 
     @Override
     public void configure(WebSecurity web) throws Exception {
         web
-                .ignoring()
-                .antMatchers("/h2/**");
+            .ignoring()
+            .antMatchers("/h2/**");
     }
 }

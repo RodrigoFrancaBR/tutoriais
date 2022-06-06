@@ -5,44 +5,46 @@ spring:
 
   datasource:
 #*******************H2*********************************#
-    url: jdbc:h2:mem:testdb
-    username: sa
-    password:
-    driverClassName: org.h2.Driver
+#    url: jdbc:h2:mem:testdb
+#    username: sa
+#    password:
+#    driverClassName: org.h2.Driver
 #*******************H2*********************************#
 
 #*******************MYSQL*********************************#
-#    url: jdbc:mysql://${API_ENRIQUECIMENTO_MYSQL_HOST:localhost}:${API_ENRIQUECIMENTO_MYSQL_PORT:3306}/${API_ENRIQUECIMENTO_MYSQL_DATABASE:api_enriquecimento}?createDatabaseIfNotExist=true&serverTimezone=UTC
-#    username: ${API_ENRIQUECIMENTO_MYSQL_USER:root}
-#    password: ${API_ENRIQUECIMENTO_MYSQL_PASSWORD:root}
+    url: jdbc:mysql://${API_ENRIQUECIMENTO_MYSQL_HOST:localhost}:${API_ENRIQUECIMENTO_MYSQL_PORT:3306}/${API_ENRIQUECIMENTO_MYSQL_DATABASE:api_enriquecimento}?createDatabaseIfNotExist=true&serverTimezone=UTC
+    username: ${API_ENRIQUECIMENTO_MYSQL_USER:root}
+    password: ${API_ENRIQUECIMENTO_MYSQL_PASSWORD:root}
 #*******************MYSQL*********************************#
 
   jpa:
     # combinado com o arquivo import.sql é feito insert na tabela
     generate-ddl: 'true'
 #*******************H2*********************************#
-    database-platform: org.hibernate.dialect.H2Dialect
-    properties:
-      hibernate:
-        show_sql: true
-        format_sql: true
-#*******************H2*********************************#
-
-#*******************MYSQL*********************************#
+#    database-platform: org.hibernate.dialect.H2Dialect
 #    properties:
 #      hibernate:
-#        dialect: org.hibernate.dialect.MySQL57Dialect
-#        format_sql: 'true'
-#    hibernate:
-#      ddl-auto: create
-#    show-sql: 'true'
+#        show_sql: true
+#        format_sql: true
+#*******************H2*********************************#
+
+#*******************MYSQL*********************************#
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL57Dialect
+        format_sql: 'true'
+    hibernate:
+      ddl-auto: create
+    show-sql: 'true'
 #*******************MYSQL*********************************#
 
 #*******************H2*********************************#
-  h2:
-    console:
-      enabled: true
-      path: /h2
+#  h2:
+#    console:
+#      enabled: true
+#      settings:
+#        web-allow-others: true
+#      path: /h2
 #*******************H2*********************************#
 
   data:
