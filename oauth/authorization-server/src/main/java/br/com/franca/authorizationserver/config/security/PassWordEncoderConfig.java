@@ -12,4 +12,5 @@ public class PassWordEncoderConfig {
     public PasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
 }

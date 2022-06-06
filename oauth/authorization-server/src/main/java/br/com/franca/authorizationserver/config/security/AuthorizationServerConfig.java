@@ -25,64 +25,40 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Autowired
     private AuthenticationManager authenticationManager;
 
-    @Autowired
-    private TokenStore redisTokenStore;
+//    @Autowired
+//    private TokenStore redisTokenStore;
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
 
         clients.inMemory()
-                /**
-                 * Para clientes (Password Credentials, Password Flows, Password Grant, Password Grant Type)
-                 */
-                .withClient("WebApplicationClientId")
-                .secret(passwordEncoder.encode("WebApplicationClientSecret"))
-                .authorizedGrantTypes("password", "refresh_token")
-                .scopes("write", "read")
-                .accessTokenValiditySeconds(6 * 60 * 60)// 6 horas
-                .refreshTokenValiditySeconds(60 * 24 * 60 * 60) // 60 dias
-
-//                .and()
-//                .withClient("OtherWebApplicationClientId")
-////                .secret(passwordEncoder.encode("OtherWebApplicationClientSecret"))
-//                .secret(passwordEncoder.encode(""))
-//                .authorizedGrantTypes("authorization_code")
-//                .scopes("write", "read")
-//                .redirectUris("http://localhost:8080")
-//
-                /**
-                 * Para os clientes Credentials Grant
-                 */
-                .and()
-                .withClient("BatchApplicationClientId")
-                .secret(passwordEncoder.encode("BatchApplicationClientSecret"))
-                .authorizedGrantTypes("client_credentials")
-                .scopes("write", "read")
-
-                /**
-                 * Para aplicação cliente ResourceServer
-                 */
-                .and()
-                .withClient("ResourcerServerClientID")
-                .secret(passwordEncoder.encode("ResourcerServerClientSecret"));
+            /**
+             * Para clientes (Password Credentials, Password Flows, Password Grant, Password Grant Type) outros nomes para a mesma coisa
+             */
+            .withClient("WebApplicationClientId")
+            .secret(passwordEncoder.encode("WebApplicationClientSecret"))
+            .authorizedGrantTypes("password")
+            .scopes("write", "read")
+            .accessTokenValiditySeconds(6 * 60 * 60)// 6 horas
+            .refreshTokenValiditySeconds(60 * 24 * 60 * 60); // 60 dias
     }
 
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         endpoints
-                .authenticationManager(authenticationManager)
-                .userDetailsService(userDetailsService)
-//                .reuseRefreshTokens(false)
-                .tokenStore(redisTokenStore);
+            .authenticationManager(authenticationManager)
+            .userDetailsService(userDetailsService)
+                .reuseRefreshTokens(false);
+            //.tokenStore(redisTokenStore);
 //                .tokenGranter(tokenGranter(endpoints));
     }
 
-    @Override
-    public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
-        security.checkTokenAccess("isAuthenticated()");
-        // security.checkTokenAccess("permitAll()");
-        // .allowFormAuthenticationForClients();
-    }
+//    @Override
+//    public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
+//        security.checkTokenAccess("isAuthenticated()");
+//        // security.checkTokenAccess("permitAll()");
+//        // .allowFormAuthenticationForClients();
+//    }
 
 //    private TokenGranter tokenGranter(AuthorizationServerEndpointsConfigurer endpoints) {
 //        PkceAuthorizationCodeTokenGranter pkceAuthorizationCodeTokenGranter = new PkceAuthorizationCodeTokenGranter(endpoints.getTokenServices(),
